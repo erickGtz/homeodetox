@@ -30,7 +30,7 @@ export const siteConfig: SiteConfig = {
   doctor: {
     name: "Dr. Ricardo Rojas Esparza",
     specialty: "Medicina integrativa y homeopatía",
-    license: "TODO_CONTENIDO",
+    license: "Pendiente de confirmar",
   },
   contact: {
     address: "Av. Insurgentes Sur 1872, Florida, Álvaro Obregón, 01030, CDMX",
