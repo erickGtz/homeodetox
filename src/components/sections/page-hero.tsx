@@ -13,6 +13,7 @@ type PageHeroProps = {
   tone?: "dark" | "light";
   align?: "left" | "center";
   titleVariant?: "display" | "page";
+  titleClassName?: string;
   className?: string;
 };
 
@@ -23,6 +24,7 @@ export function PageHero({
   tone = "dark",
   align = "left",
   titleVariant = "display",
+  titleClassName,
   className,
 }: PageHeroProps) {
   const isLight = tone === "light";
@@ -80,8 +82,9 @@ export function PageHero({
           className={cn(
             isCentered ? "mx-auto max-w-4xl" : "max-w-4xl",
             titleVariant === "page"
-              ? "font-sans text-4xl font-bold tracking-[0.02em] uppercase sm:text-5xl lg:text-6xl"
+              ? "font-sans text-4xl font-bold uppercase sm:text-5xl lg:text-6xl"
               : "font-display text-4xl font-semibold tracking-tight sm:text-5xl",
+            titleClassName ?? (titleVariant === "page" ? "tracking-[0.02em]" : undefined),
           )}
         >
           {title}
