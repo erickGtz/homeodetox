@@ -34,6 +34,36 @@ export function buildMetadata({ title, description, path = "/", image }: SeoInpu
   };
 }
 
+type ArticleJsonLdInput = {
+  title: string;
+  description: string;
+  path: string;
+  date: string;
+  author: string;
+  image?: string;
+};
+
+export function articleJsonLd({
+  title,
+  description,
+  path,
+  date,
+  author,
+  image,
+}: ArticleJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    datePublished: date,
+    author: { "@type": "Person", name: author },
+    publisher: { "@type": "Organization", name: siteConfig.name },
+    mainEntityOfPage: new URL(path, siteConfig.url).toString(),
+    ...(image ? { image: new URL(image, siteConfig.url).toString() } : {}),
+  } satisfies Record<string, unknown>;
+}
+
 export function physicianJsonLd() {
   return {
     "@context": "https://schema.org",
