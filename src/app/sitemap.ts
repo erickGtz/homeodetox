@@ -1,11 +1,17 @@
 import type { MetadataRoute } from "next";
-import { getBlogPosts } from "@/lib/content/loader";
+import { getBlogPosts, getEvents } from "@/lib/content/loader";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = getBlogPosts().map((post) => ({
     url: new URL(`/blog/${post.slug}`, siteConfig.url).toString(),
     lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const events = getEvents().map((event) => ({
+    url: new URL(`/servicios/eventos/${event.slug}`, siteConfig.url).toString(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
@@ -22,6 +28,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: new URL("/servicios/consulta", siteConfig.url).toString(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: new URL("/servicios/eventos", siteConfig.url).toString(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: new URL("/farmacovigilancia", siteConfig.url).toString(),
       changeFrequency: "monthly",
       priority: 0.7,
@@ -32,5 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...blogPosts,
+    ...events,
   ];
 }

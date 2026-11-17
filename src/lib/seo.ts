@@ -64,6 +64,51 @@ export function articleJsonLd({
   } satisfies Record<string, unknown>;
 }
 
+type EventJsonLdInput = {
+  name: string;
+  description: string;
+  startDate: string;
+  location: string;
+  path: string;
+  image?: string;
+};
+
+export function eventJsonLd({
+  name,
+  description,
+  startDate,
+  location,
+  path,
+  image,
+}: EventJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name,
+    description,
+    startDate,
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    location: {
+      "@type": "Place",
+      name: siteConfig.name,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: location,
+        addressLocality: "Ciudad de México",
+        addressCountry: "MX",
+      },
+    },
+    organizer: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    mainEntityOfPage: new URL(path, siteConfig.url).toString(),
+    ...(image ? { image: new URL(image, siteConfig.url).toString() } : {}),
+  } satisfies Record<string, unknown>;
+}
+
 export function physicianJsonLd() {
   return {
     "@context": "https://schema.org",

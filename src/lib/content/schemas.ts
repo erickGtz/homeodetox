@@ -72,9 +72,10 @@ export const eventSchema = z.object({
   date: z.string().min(1),
   location: z.string().min(1),
   schedule: z.string().optional(),
+  duration: z.string().optional(),
   cost: z.string().optional(),
   courtesies: z.string().optional(),
-  cover: z.string().min(1),
+  cover: z.string().min(1).optional(),
   seo: seoSchema,
 });
 
