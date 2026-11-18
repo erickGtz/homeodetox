@@ -126,3 +126,27 @@ export function physicianJsonLd() {
     openingHours: siteConfig.schedule,
   } satisfies Record<string, unknown>;
 }
+
+type FaqJsonLdInput = {
+  path: string;
+  items: {
+    question: string;
+    answer: string;
+  }[];
+};
+
+export function faqJsonLd({ path, items }: FaqJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+    url: new URL(path, siteConfig.url).toString(),
+  } satisfies Record<string, unknown>;
+}
