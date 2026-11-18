@@ -1,4 +1,4 @@
-export type TherapyRegionId = "rodilla" | "cadera" | "columna";
+export type TherapyRegionId = "rodilla" | "cadera" | "columna-pelvicos";
 
 export type TherapyRegion = {
   id: TherapyRegionId;
@@ -20,7 +20,7 @@ export type TherapyTreatment = {
   slug: string;
   regionId: TherapyRegionId;
   title: string;
-  description: string;
+  description?: string;
   image?: string | null;
   imageLabel: string;
   steps: string[];
@@ -30,46 +30,46 @@ export type TherapyTreatment = {
 export type TherapyLabels = {
   regionNav: string;
   steps: string;
-  watchVideos: string;
-  backToCard: string;
-  videosTitle: string;
+  infoLabel: string;
+  imagePlaceholder: string;
+  swipeHint: string;
   videoPending: string;
   videoPlay: string;
-  videoMissing: string;
-  previousVideo: string;
-  nextVideo: string;
+  previousSlide: string;
+  nextSlide: string;
   slideLabel: string;
 };
 
 export const therapyLabels: TherapyLabels = {
   regionNav: "Regiones a tratar",
   steps: "Cómo se realiza",
-  watchVideos: "Ver videos",
-  backToCard: "Volver",
-  videosTitle: "Videos del procedimiento",
+  infoLabel: "Información del tratamiento",
+  imagePlaceholder: "Aquí va una imagen",
+  swipeHint: "Desliza para ver los videos",
   videoPending: "Video pendiente",
   videoPlay: "Reproducir video",
-  videoMissing: "Aún no hay videos cargados para este tratamiento.",
-  previousVideo: "Video anterior",
-  nextVideo: "Video siguiente",
-  slideLabel: "Video {current} de {total}",
+  previousSlide: "Diapositiva anterior",
+  nextSlide: "Diapositiva siguiente",
+  slideLabel: "Diapositiva {current} de {total}",
 };
 
 export const therapyRegions: TherapyRegion[] = [
   {
     id: "rodilla",
     label: "Rodilla",
-    summary: "Procedimientos guiados por ultrasonido para dolor e inflamación de rodilla.",
+    summary:
+      "Infiltraciones y ozonoterapia guiadas por ultrasonido para dolor e inflamación de rodilla.",
   },
   {
     id: "cadera",
     label: "Cadera",
-    summary: "Procedimientos guiados por ultrasonido en la articulación coxofemoral.",
+    summary: "Infiltración guiada por ultrasonido en la articulación coxofemoral.",
   },
   {
-    id: "columna",
-    label: "Columna",
-    summary: "Bloqueos e infiltraciones guiadas por ultrasonido en columna lumbar.",
+    id: "columna-pelvicos",
+    label: "Columna y pélvicos",
+    summary:
+      "Infiltraciones y ozonoterapia guiadas por ultrasonido en columna lumbar e hiato sacro.",
   },
 ];
 
@@ -90,97 +90,59 @@ export const therapyTreatments: TherapyTreatment[] = [
   {
     slug: "infiltracion-de-rodilla",
     regionId: "rodilla",
-    title: "Infiltración de rodilla",
-    description:
-      "Aplicación local de medicamento en la articulación de la rodilla, guiada por ultrasonido.",
+    title: "Infiltración de rodillas",
+    description: "Extracción y aplicación de plasma y médula ósea.",
     imageLabel: "Infiltración de rodilla",
     steps: commonSteps,
     videos: emptyVideos(),
   },
   {
-    slug: "infiltracion-con-ozono",
+    slug: "ozonoterapia-rodilla",
     regionId: "rodilla",
-    title: "Infiltración con ozono",
-    description: "Aplicación de ozono medicinal en la zona a tratar, con control por ultrasonido.",
-    imageLabel: "Infiltración con ozono",
+    title: "Ozonoterapia",
+    description: "Infiltración de ozono para reducir inflamación y dolor.",
+    imageLabel: "Ozonoterapia en rodilla",
     steps: commonSteps,
     videos: emptyVideos(),
   },
   {
-    slug: "acutomo-pata-de-ganso",
+    slug: "acutomomedicina",
     regionId: "rodilla",
-    title: "Acutomo (pata de ganso)",
-    description:
-      "Aguja terapéutica de mayor grosor que la de acupuntura tradicional, aplicada en la región de la pata de ganso.",
-    imageLabel: "Acutomo en pata de ganso",
-    steps: commonSteps,
-    videos: emptyVideos(),
-  },
-  {
-    slug: "puncion-articular",
-    regionId: "rodilla",
-    title: "Punción articular",
-    description:
-      "Extracción de líquido o tejido con aguja en la articulación, con apoyo de ultrasonido.",
-    imageLabel: "Punción articular",
+    title: "Acutomomedicina",
+    imageLabel: "Acutomomedicina en rodilla",
     steps: commonSteps,
     videos: emptyVideos(),
   },
   {
     slug: "infiltracion-coxofemoral",
     regionId: "cadera",
-    title: "Infiltración de articulación coxofemoral",
-    description:
-      "Aplicación local de medicamento en la articulación de la cadera, guiada por ultrasonido.",
-    imageLabel: "Infiltración de articulación coxofemoral",
+    title: "Infiltración en articulación coxofemoral",
+    imageLabel: "Infiltración en articulación coxofemoral",
     steps: commonSteps,
     videos: emptyVideos(),
   },
   {
-    slug: "puncion-articular-de-cadera",
-    regionId: "cadera",
-    title: "Punción articular de cadera",
-    description:
-      "Extracción de líquido o tejido con aguja en la articulación de la cadera, con apoyo de ultrasonido.",
-    imageLabel: "Punción articular de cadera",
-    steps: commonSteps,
-    videos: emptyVideos(),
-  },
-  {
-    slug: "infiltracion-de-columna-lumbar",
-    regionId: "columna",
+    slug: "infiltracion-columna-lumbar",
+    regionId: "columna-pelvicos",
     title: "Infiltración de columna lumbar",
-    description: "Aplicación local de medicamento en la columna lumbar, guiada por ultrasonido.",
     imageLabel: "Infiltración de columna lumbar",
     steps: commonSteps,
     videos: emptyVideos(),
   },
   {
-    slug: "bloqueo-epidural",
-    regionId: "columna",
-    title: "Bloqueo epidural",
-    description:
-      "Bloqueo con anestésico local en el espacio epidural, con sedación cuando se requiere.",
-    imageLabel: "Bloqueo epidural",
-    steps: commonSteps,
-    videos: emptyVideos(),
-  },
-  {
-    slug: "hiato-sacro",
-    regionId: "columna",
-    title: "Hiato sacro",
-    description: "Infiltración en el hiato sacro, con control por ultrasonido.",
+    slug: "infiltracion-hiato-sacro",
+    regionId: "columna-pelvicos",
+    title: "Infiltración de hiato sacro",
     imageLabel: "Infiltración en hiato sacro",
     steps: commonSteps,
     videos: emptyVideos(),
   },
   {
-    slug: "cavitacion-lumbar",
-    regionId: "columna",
-    title: "Cavitación lumbar",
-    description:
-      "Ultrasonido de baja frecuencia aplicado en la zona lumbar para actuar sobre los adipocitos.",
-    imageLabel: "Cavitación lumbar",
+    slug: "ozonoterapia-columna",
+    regionId: "columna-pelvicos",
+    title: "Ozonoterapia",
+    description: "Infiltración de ozono para reducir inflamación y dolor.",
+    imageLabel: "Ozonoterapia en columna",
     steps: commonSteps,
     videos: emptyVideos(),
   },
@@ -206,6 +168,6 @@ export const terapiasContent = {
   seo: {
     title: "Medicina regenerativa y terapia del dolor",
     description:
-      "Infiltraciones, bloqueos y procedimientos guiados por ultrasonido para rodilla, cadera y columna en HomeoDetox, Ciudad de México.",
+      "Infiltraciones, ozonoterapia y procedimientos guiados por ultrasonido para rodilla, cadera y columna en HomeoDetox, Ciudad de México.",
   },
 };
