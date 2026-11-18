@@ -18,7 +18,7 @@ export default function EventosPage() {
   const workshops = events.filter((event) => event.kind === "taller");
 
   return (
-    <section className="bg-bg">
+    <section className="bg-surface">
       <Container className="py-8 pb-16 sm:py-10 sm:pb-20">
         <Breadcrumbs
           items={[

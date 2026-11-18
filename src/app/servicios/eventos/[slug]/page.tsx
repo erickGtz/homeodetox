@@ -33,7 +33,7 @@ export default function EventPage({ params }: EventPageProps) {
   return (
     <Suspense
       fallback={
-        <div className="bg-bg" aria-hidden="true">
+        <div className="bg-surface" aria-hidden="true">
           <Container className="py-8 pb-16 sm:py-10 sm:pb-20">
             <div className="bg-border/60 h-4 w-56 animate-pulse rounded" />
             <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,374px)_minmax(0,1fr)] lg:gap-14">

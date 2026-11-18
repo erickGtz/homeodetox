@@ -50,7 +50,7 @@ export async function EventDetails({ params }: EventDetailsProps) {
         }}
       />
 
-      <article className="bg-bg">
+      <article className="bg-surface">
         <Container className="py-8 pb-16 sm:py-10 sm:pb-20">
           <Breadcrumbs
             items={[

@@ -15,7 +15,7 @@ export function ServicesTabs({ tabs }: ServicesTabsProps) {
 
   return (
     <nav aria-label="Secciones de servicios" className="border-border bg-surface border-b">
-      <Container className="flex gap-8 overflow-x-auto">
+      <Container className="flex [scrollbar-width:none] gap-6 overflow-x-auto overflow-y-hidden sm:gap-8 [&::-webkit-scrollbar]:hidden">
         {tabs.map((tab) => {
           const isActive = pathname === tab.href || pathname.startsWith(`${tab.href}/`);
 

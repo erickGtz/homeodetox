@@ -17,7 +17,7 @@ export default function ConsultaPage() {
   const { breadcrumbs, heading, intro, doctor, booking } = consultaContent;
 
   return (
-    <section className="bg-bg">
+    <section className="bg-surface">
       <Container className="py-8 pb-16 sm:py-10 sm:pb-20">
         <Breadcrumbs items={breadcrumbs} />
         <h2 className="text-primary-dark mt-5 text-3xl font-normal tracking-tight sm:text-4xl">
@@ -33,7 +33,7 @@ export default function ConsultaPage() {
           </p>
         </div>
 
-        <div className="border-border bg-surface mt-10 overflow-hidden rounded-3xl border shadow-sm">
+        <div className="border-border bg-bg mt-10 overflow-hidden rounded-3xl border shadow-sm">
           <DoctorCard
             eyebrow={doctor.eyebrow}
             name={siteConfig.doctor.name}
