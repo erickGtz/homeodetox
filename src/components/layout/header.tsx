@@ -1,24 +1,42 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { buttonClasses } from "@/components/ui/button";
 import { IconClose, IconMenu } from "@/components/ui/icons";
-import { mainNavLeft, mainNavRight, type NavItem } from "@/content/site";
+import { headerCta, mainNavLeft, mainNavRight, type NavItem } from "@/content/site";
 import { cn } from "@/lib/utils";
 
+function isActivePath(pathname: string, href: string) {
+  return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+}
+
 function NavLinks({ items, className }: { items: NavItem[]; className?: string }) {
+  const pathname = usePathname();
+
   return (
     <ul className={cn("flex items-center gap-0.5", className)}>
-      {items.map((item) => (
-        <li key={item.href}>
-          <Link
-            href={item.href}
-            className="text-text-muted hover:bg-primary/5 hover:text-primary inline-flex min-h-9 items-center rounded px-3.5 py-1.5 text-[15px] font-medium whitespace-nowrap uppercase transition-colors"
-          >
-            {item.label}
-          </Link>
-        </li>
-      ))}
+      {items.map((item) => {
+        const isActive = isActivePath(pathname, item.href);
+
+        return (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              aria-current={isActive ? "page" : undefined}
+              className={cn(
+                "inline-flex min-h-9 items-center rounded px-3.5 py-1.5 text-[15px] font-medium whitespace-nowrap uppercase transition-colors",
+                isActive
+                  ? "bg-primary/10 text-primary"
+                  : "text-text-muted hover:bg-primary/5 hover:text-primary",
+              )}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -41,8 +59,17 @@ export function Header() {
           HomeoDetox
         </Link>
 
-        <nav aria-label="Navegación secundaria" className="hidden justify-start lg:flex">
+        <nav
+          aria-label="Navegación secundaria"
+          className="hidden items-center justify-start lg:flex"
+        >
           <NavLinks items={mainNavRight} />
+          <Link
+            href={headerCta.href}
+            className={buttonClasses({ size: "sm", className: "ml-2 hidden xl:inline-flex" })}
+          >
+            {headerCta.label}
+          </Link>
         </nav>
 
         <button
@@ -73,6 +100,13 @@ export function Header() {
                 </li>
               ))}
             </ul>
+            <Link
+              href={headerCta.href}
+              onClick={() => setIsOpen(false)}
+              className={buttonClasses({ className: "mt-4 w-full" })}
+            >
+              {headerCta.label}
+            </Link>
           </nav>
         </div>
       ) : null}

@@ -46,6 +46,7 @@ export const footerColumns: FooterColumn[] = [
     items: [
       { label: "Consultas", href: "/servicios/consulta" },
       { label: "Terapias", href: "/servicios/terapias" },
+      { label: "Eventos", href: "/servicios/eventos" },
     ],
   },
   {

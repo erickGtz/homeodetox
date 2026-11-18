@@ -39,12 +39,18 @@ export function Hero({
           sizes="100vw"
           className="object-cover opacity-40"
         />
-      ) : (
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(127,164,91,0.35),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(124,153,146,0.45),transparent_50%)]"
-        />
-      )}
+      ) : null}
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(127,164,91,0.35),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(124,153,146,0.45),transparent_50%)]"
+      />
+
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-28 -right-20 size-[22rem] rounded-full border border-white/10 bg-white/5" />
+        <div className="absolute top-1/3 -right-10 size-40 rounded-full border border-white/10" />
+        <div className="absolute -bottom-24 -left-16 size-72 rounded-full border border-white/10 bg-white/5" />
+      </div>
 
       <Container className="relative flex min-h-[520px] flex-col items-center justify-center py-20 text-center">
         {eyebrow ? (
@@ -68,9 +74,14 @@ export function Hero({
           </div>
         ) : null}
         {highlights.length > 0 ? (
-          <ul className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs tracking-[0.2em] text-white/70 uppercase">
+          <ul className="mt-10 flex flex-wrap justify-center gap-2">
             {highlights.map((highlight) => (
-              <li key={highlight}>{highlight}</li>
+              <li
+                key={highlight}
+                className="rounded-full border border-white/20 bg-white/5 px-4 py-1 text-[11px] font-medium tracking-wide text-white/80"
+              >
+                {highlight}
+              </li>
             ))}
           </ul>
         ) : null}

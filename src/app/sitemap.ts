@@ -38,6 +38,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: new URL("/servicios/terapias", siteConfig.url).toString(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: new URL("/agendar", siteConfig.url).toString(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: new URL("/faq", siteConfig.url).toString(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
       url: new URL("/farmacovigilancia", siteConfig.url).toString(),
       changeFrequency: "monthly",
       priority: 0.7,
