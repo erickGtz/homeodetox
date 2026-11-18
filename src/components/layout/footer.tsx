@@ -8,8 +8,8 @@ export function Footer() {
   return (
     <footer className="bg-secondary text-on-primary">
       <Container className="py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
-          <div className="lg:col-span-2">
+        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-7 lg:gap-x-4 xl:gap-x-8">
+          <div className="sm:col-span-2 lg:col-span-2">
             <Link href="/" className="font-display text-2xl font-semibold tracking-tight">
               {siteConfig.name}
             </Link>
@@ -34,7 +34,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold tracking-widest uppercase">Información</h2>
+            <h2 className="text-sm font-semibold tracking-widest uppercase lg:text-xs xl:text-sm">
+              Información
+            </h2>
             <address className="mt-4 space-y-2 text-sm text-white/85 not-italic">
               <p>{siteConfig.contact.address}</p>
               <p>
@@ -47,7 +49,9 @@ export function Footer() {
 
           {footerColumns.map((column) => (
             <div key={column.title}>
-              <h2 className="text-sm font-semibold tracking-widest uppercase">{column.title}</h2>
+              <h2 className="text-sm font-semibold tracking-widest uppercase lg:text-xs xl:text-sm">
+                {column.title}
+              </h2>
               <ul className="mt-4 space-y-2 text-sm text-white/85">
                 {column.items.map((item) => (
                   <li key={item.href}>

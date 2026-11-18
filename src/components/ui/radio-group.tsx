@@ -11,9 +11,20 @@ type RadioGroupProps = {
   name: string;
   options: RadioOption[];
   error?: string;
-} & Omit<ComponentProps<"fieldset">, "name">;
+  value?: string;
+  onValueChange?: (value: string) => void;
+} & Omit<ComponentProps<"fieldset">, "name" | "value" | "onChange">;
 
-export function RadioGroup({ legend, name, options, error, className, ...props }: RadioGroupProps) {
+export function RadioGroup({
+  legend,
+  name,
+  options,
+  error,
+  value,
+  onValueChange,
+  className,
+  ...props
+}: RadioGroupProps) {
   return (
     <fieldset className={cn("flex flex-col gap-3", className)} {...props}>
       <legend className="text-text text-xs font-semibold tracking-widest uppercase">
@@ -34,6 +45,8 @@ export function RadioGroup({ legend, name, options, error, className, ...props }
                 type="radio"
                 name={name}
                 value={option.value}
+                checked={value === undefined ? undefined : value === option.value}
+                onChange={onValueChange ? () => onValueChange(option.value) : undefined}
                 className="accent-primary size-4"
               />
               {option.label}

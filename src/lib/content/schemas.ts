@@ -56,9 +56,10 @@ export const blogPostSchema = z.object({
   date: z.string().min(1),
   author: z.string().min(1),
   excerpt: z.string().min(1),
-  cover: z.string().min(1),
+  cover: z.string().min(1).optional(),
   videoUrl: z.string().optional(),
-  tags: z.array(z.string().min(1)),
+  duration: z.string().optional(),
+  tags: z.array(z.string().min(1)).default([]),
   seo: seoSchema,
 });
 
@@ -71,9 +72,10 @@ export const eventSchema = z.object({
   date: z.string().min(1),
   location: z.string().min(1),
   schedule: z.string().optional(),
+  duration: z.string().optional(),
   cost: z.string().optional(),
   courtesies: z.string().optional(),
-  cover: z.string().min(1),
+  cover: z.string().min(1).optional(),
   seo: seoSchema,
 });
 

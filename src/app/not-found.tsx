@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
@@ -11,9 +12,22 @@ export default function NotFound() {
       <p className="text-text-muted mt-4 max-w-xl">
         La dirección puede haber cambiado o la página todavía no existe.
       </p>
-      <Button href="/" className="mt-8">
-        Volver al inicio
-      </Button>
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <Button href="/">Volver al inicio</Button>
+        <Button href="/servicios/consulta" variant="outline">
+          Ver servicios
+        </Button>
+        <Button href="/faq" variant="ghost">
+          Preguntas frecuentes
+        </Button>
+      </div>
+      <p className="text-text-muted mt-10 text-sm">
+        ¿Buscas algo más?{" "}
+        <Link href="/agendar" className="text-primary underline underline-offset-4">
+          Agenda una cita
+        </Link>
+        .
+      </p>
     </Container>
   );
 }

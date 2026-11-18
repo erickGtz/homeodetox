@@ -34,6 +34,81 @@ export function buildMetadata({ title, description, path = "/", image }: SeoInpu
   };
 }
 
+type ArticleJsonLdInput = {
+  title: string;
+  description: string;
+  path: string;
+  date: string;
+  author: string;
+  image?: string;
+};
+
+export function articleJsonLd({
+  title,
+  description,
+  path,
+  date,
+  author,
+  image,
+}: ArticleJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    datePublished: date,
+    author: { "@type": "Person", name: author },
+    publisher: { "@type": "Organization", name: siteConfig.name },
+    mainEntityOfPage: new URL(path, siteConfig.url).toString(),
+    ...(image ? { image: new URL(image, siteConfig.url).toString() } : {}),
+  } satisfies Record<string, unknown>;
+}
+
+type EventJsonLdInput = {
+  name: string;
+  description: string;
+  startDate: string;
+  location: string;
+  path: string;
+  image?: string;
+};
+
+export function eventJsonLd({
+  name,
+  description,
+  startDate,
+  location,
+  path,
+  image,
+}: EventJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name,
+    description,
+    startDate,
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    location: {
+      "@type": "Place",
+      name: siteConfig.name,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: location,
+        addressLocality: "Ciudad de México",
+        addressCountry: "MX",
+      },
+    },
+    organizer: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    mainEntityOfPage: new URL(path, siteConfig.url).toString(),
+    ...(image ? { image: new URL(image, siteConfig.url).toString() } : {}),
+  } satisfies Record<string, unknown>;
+}
+
 export function physicianJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -49,5 +124,29 @@ export function physicianJsonLd() {
       addressCountry: "MX",
     },
     openingHours: siteConfig.schedule,
+  } satisfies Record<string, unknown>;
+}
+
+type FaqJsonLdInput = {
+  path: string;
+  items: {
+    question: string;
+    answer: string;
+  }[];
+};
+
+export function faqJsonLd({ path, items }: FaqJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+    url: new URL(path, siteConfig.url).toString(),
   } satisfies Record<string, unknown>;
 }
