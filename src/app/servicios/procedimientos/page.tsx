@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { TherapyGallery } from "@/components/sections/therapy-gallery";
 import { Button, buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { terapiasContent } from "@/content/terapias";
+import { terapiasContent } from "@/content/procedimientos";
 import { buildMetadata } from "@/lib/seo";
 import { getWhatsAppLink } from "@/lib/site-config";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
   title: terapiasContent.seo.title,
@@ -14,7 +14,17 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function TerapiasPage() {
-  const { breadcrumbs, heading, intro, regions, treatments, labels, note, cta } = terapiasContent;
+  const {
+  breadcrumbs,
+  heading,
+  intro,
+  regions,
+  treatments,
+  activities,
+  labels,
+  note,
+  cta,
+} = terapiasContent;
 
   const whatsappHref = getWhatsAppLink(cta.whatsappMessage);
 
@@ -30,7 +40,12 @@ export default function TerapiasPage() {
         <p className="text-text-body mt-5 max-w-3xl text-base leading-[1.85] font-light">{intro}</p>
 
         <div className="mt-10">
-          <TherapyGallery regions={regions} treatments={treatments} labels={labels} />
+          <TherapyGallery
+            regions={regions}
+            treatments={treatments}
+            activities={activities}
+            labels={labels}
+          />
         </div>
 
         <p className="text-text-muted mt-6 text-xs leading-relaxed">{note}</p>

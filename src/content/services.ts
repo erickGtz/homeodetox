@@ -6,7 +6,7 @@ export type ServiceTab = {
 
 export const servicesTabs: ServiceTab[] = [
   { id: "consulta", label: "Consulta", href: "/servicios/consulta" },
-  { id: "terapias", label: "Terapias", href: "/servicios/terapias" },
+  { id: "procedimientos", label: "Procedimientos", href: "/servicios/procedimientos" },
   { id: "eventos", label: "Eventos", href: "/servicios/eventos" },
 ];
 

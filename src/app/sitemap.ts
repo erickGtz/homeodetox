@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next";
 import { getBlogPosts, getEvents } from "@/lib/content/loader";
 import { siteConfig } from "@/lib/site-config";
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = getBlogPosts().map((post) => ({
@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: new URL("/servicios/terapias", siteConfig.url).toString(),
+      url: new URL("/servicios/procedimientos", siteConfig.url).toString(),
       changeFrequency: "monthly",
       priority: 0.8,
     },

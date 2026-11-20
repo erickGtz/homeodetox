@@ -37,10 +37,10 @@ export const homeContent = {
         imageLabel: "Fotografía de una consulta médica",
       },
       {
-        id: "terapias",
-        label: "Terapias",
+        id: "procedimientos",
+        label: "Procedimientos",
         description: "Medicina regenerativa y terapia del dolor en rodilla, cadera y columna.",
-        href: "/servicios/terapias",
+        href: "/servicios/procedimientos",
         imageLabel: "Fotografía de una terapia guiada por ultrasonido",
       },
     ] satisfies HomeServiceHighlight[],
@@ -69,7 +69,7 @@ export const homeContent = {
     ] satisfies HomeValue[],
     imageLabel: "Fotografía del consultorio",
     cta: { label: "Conócenos", href: "/nosotros" },
-  },
+  },/*
   products: {
     eyebrow: "Catálogo",
     title: "¡Conoce nuestros productos!",
@@ -77,7 +77,7 @@ export const homeContent = {
       "Muy pronto podrás conocer y adquirir nuestros productos homeopáticos desde el sitio. Mientras tanto, escríbenos para consultar disponibilidad.",
     label: "Ver catálogo",
     href: "/productos",
-  },
+  },*/
   events: {
     title: "Eventos",
     subtitle: "Cursos, talleres y seminarios de medicina integrativa.",

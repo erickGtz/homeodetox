@@ -1,4 +1,3 @@
-import { CtaBanner } from "@/components/sections/cta-banner";
 import { EventsCarousel, type EventSummary } from "@/components/sections/events-carousel";
 import { FaqSection } from "@/components/sections/faq-section";
 import { Hero } from "@/components/sections/hero";
@@ -19,7 +18,7 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function Home() {
-  const { hero, services, why, products, events, blog, faq } = homeContent;
+  const { hero, services, why, /*products*/ events, blog, faq } = homeContent;
 
   const upcomingEvents: EventSummary[] = getEvents()
     .slice(0, 4)
@@ -84,13 +83,13 @@ export default function Home() {
         cta={why.cta}
       />
 
-      <CtaBanner
+      {/*<CtaBanner
         eyebrow={products.eyebrow}
         title={products.title}
         description={products.description}
         href={products.href}
         label={products.label}
-      />
+      /> */}
 
       <EventsCarousel
         title={events.title}
