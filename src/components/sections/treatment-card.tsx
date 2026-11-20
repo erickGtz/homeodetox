@@ -244,7 +244,7 @@ export function TreatmentCard({
                     className="w-full min-w-full snap-start"
                     aria-label={item.title}
                   >
-                    <div className="flex h-full w-full items-center justify-center p-4">
+                    <div className="flex h-full w-full items-center justify-center p-1">
 
                       <div className="bg-primary-dark/70 relative aspect-[4/5] w-[min(100%,280px)] shrink-0 overflow-hidden rounded-2xl sm:w-[315px]">
                         {/* VIDEO */}
@@ -252,14 +252,14 @@ export function TreatmentCard({
                         {item.type === "video" ? (
                           isPlaying ? (
                             <iframe
-                              src={drivePreviewUrl(item.driveFileId)}
-                              title={item.title}
-                              allow="autoplay; fullscreen"
-                              allowFullScreen
-                              loading="lazy"
-                              referrerPolicy="strict-origin-when-cross-origin"
-                              className="absolute inset-0 h-full w-full border-0"
-                            />
+  src={drivePreviewUrl(item.driveFileId)}
+  title={item.title}
+  allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+  allowFullScreen
+  loading="eager"
+  referrerPolicy="strict-origin-when-cross-origin"
+  className="absolute inset-0 h-full w-full border-0"
+/>
                           ) : (
                             <button
                               type="button"
