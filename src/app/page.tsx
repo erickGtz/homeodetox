@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { EventsCarousel, type EventSummary } from "@/components/sections/events-carousel";
 import { FaqSection } from "@/components/sections/faq-section";
@@ -11,6 +10,7 @@ import { homeContent } from "@/content/home";
 import { getBlogPosts, getEvents } from "@/lib/content/loader";
 import type { BlogPost } from "@/lib/content/schemas";
 import { buildMetadata, physicianJsonLd } from "@/lib/seo";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
   title: homeContent.seo.title,
