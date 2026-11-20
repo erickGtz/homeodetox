@@ -433,14 +433,6 @@ export const therapyTreatments: TherapyTreatment[] = [
   },
 
   {
-    slug: "acutomomedicina",
-    regionId: "rodilla",
-    title: "Acutomomedicina",
-    imageLabel: "Acutomomedicina en rodilla",
-    steps: ["G", "IR"],
-  },
-
-  {
     slug: "infiltracion-coxofemoral",
     regionId: "cadera",
     title: "Infiltración en articulación coxofemoral",
