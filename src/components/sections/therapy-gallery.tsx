@@ -1,6 +1,7 @@
+
 "use client";
 
-import { TreatmentCard } from "@/components/sections/treatment-card";
+import { TreatmentCard, TreatmentDetail } from "@/components/sections/treatment-card";
 import type {
   TherapyActivity,
   TherapyActivityCode,
@@ -29,6 +30,8 @@ export function TherapyGallery({
     TherapyRegionId | undefined
   >(regions[0]?.id);
 
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+
   const activeRegion =
     regions.find((region) => region.id === activeRegionId) ?? regions[0];
 
@@ -36,8 +39,19 @@ export function TherapyGallery({
     (treatment) => treatment.regionId === activeRegion?.id,
   );
 
+  const selectedTreatment = visibleTreatments.find(
+    (treatment) => treatment.slug === selectedSlug,
+  );
+
+  function handleRegionChange(regionId: TherapyRegionId) {
+    setActiveRegionId(regionId);
+    setSelectedSlug(null);
+  }
+
   return (
     <div>
+      {/* NAVEGACIÓN POR REGIONES */}
+
       <div
         role="group"
         aria-label={labels.regionNav}
@@ -50,10 +64,7 @@ export function TherapyGallery({
             <button
               key={region.id}
               type="button"
-             onClick={() => {
-  console.log("Región seleccionada:", region.id);
-  setActiveRegionId(region.id);
-}}
+              onClick={() => handleRegionChange(region.id)}
               aria-pressed={isActive}
               className={cn(
                 "min-h-11 rounded-full px-6 text-sm font-semibold tracking-wide transition-colors",
@@ -77,16 +88,30 @@ export function TherapyGallery({
         </p>
       ) : null}
 
-      <div className="mt-8 grid items-stretch gap-6 md:grid-cols-2">
-        {visibleTreatments.map((treatment) => (
-          <TreatmentCard
-            key={`${activeRegion?.id}-${treatment.slug}`}
-            treatment={treatment}
+      {/* CATÁLOGO DE TRATAMIENTOS */}
+
+      {!selectedTreatment ? (
+        <div className="mt-8 grid items-stretch gap-6 md:grid-cols-2">
+          {visibleTreatments.map((treatment) => (
+            <TreatmentCard
+              key={`${activeRegion?.id}-${treatment.slug}`}
+              treatment={treatment}
+              onSelect={() => setSelectedSlug(treatment.slug)}
+            />
+          ))}
+        </div>
+      ) : (
+        /* DETALLE DEL TRATAMIENTO */
+
+        <div className="mt-8">
+          <TreatmentDetail
+            treatment={selectedTreatment}
             activities={activities}
             labels={labels}
+            onBack={() => setSelectedSlug(null)}
           />
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

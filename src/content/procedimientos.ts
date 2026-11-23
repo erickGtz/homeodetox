@@ -19,7 +19,11 @@ export type TherapyActivityCode =
   | "EM"
   | "EP"
   | "IR"
+  | "IRO"
+  | "VIR"
   | "IC"
+  | "ICO"
+  | "VCL"
   | "IHS"
   | "IACF";
 
@@ -127,7 +131,7 @@ export const therapyActivities: Record<
 > = {
   G: {
     code: "G",
-    title: "Actividades generales",
+    title: "Preparación clínica del paciente",
     media: [
       { id: "g-02",
       type: "image",
@@ -175,7 +179,7 @@ export const therapyActivities: Record<
 
   S: {
     code: "S",
-    title: "Preparación de soluciones",
+    title: "Preparación de solución tumescente",
     media: [{
       id: "es-08",
       type: "video",
@@ -319,7 +323,7 @@ export const therapyActivities: Record<
   
   M: {
     code: "M",
-    title: "Mezcla",
+    title: "Combinación de componentes autólogos",
     media: [
       {
       id: "es-22",
@@ -384,9 +388,27 @@ export const therapyActivities: Record<
     ],
   },
 
+  IRO: {
+    code: "VIR",
+    title: "Infiltración de ozono",
+    media: [],
+  },
+
+  VIR: {
+    code: "VIR",
+    title: "Colocaión de vendoletes",
+    media: [],
+  },
+
   IC: {
     code: "IC",
     title: "Infiltración de columna",
+    media: [],
+  },
+
+  ICO: {
+    code: "ICO",
+    title: "Infiltración de ozono",
     media: [],
   },
 
@@ -399,6 +421,12 @@ export const therapyActivities: Record<
   IACF: {
     code: "IACF",
     title: "Infiltración de articulación coxofemoral",
+    media: [],
+  },
+
+  VCL: {
+    code: "VCL",
+    title: "Colocaión de vendoletes",
     media: [],
   },
 };
@@ -420,7 +448,7 @@ export const therapyTreatments: TherapyTreatment[] = [
     title: "Infiltración de rodillas",
     description: "Extracción y aplicación de plasma y médula ósea.",
     imageLabel: "Infiltración de rodilla",
-    steps: ["G", "ES", "S", "EP", "IR"],
+    steps: ["G", "ES", "S", "EG", "EM", "EP", "M", "IR", "VIR"],
   },
 
   {
@@ -429,7 +457,7 @@ export const therapyTreatments: TherapyTreatment[] = [
     title: "Ozonoterapia",
     description: "Infiltración de ozono para reducir inflamación y dolor.",
     imageLabel: "Ozonoterapia en rodilla",
-    steps: ["G", "IR"],
+    steps: ["G", "S", "IRO", "VIR"],
   },
 
   {
@@ -437,7 +465,7 @@ export const therapyTreatments: TherapyTreatment[] = [
     regionId: "cadera",
     title: "Infiltración en articulación coxofemoral",
     imageLabel: "Infiltración en articulación coxofemoral",
-    steps: ["G", "ES", "S", "EP", "IACF"],
+    steps: ["G", "ES", "S", "EG", "EM", "EP", "M", "IACF"],
   },
 
   {
@@ -445,7 +473,7 @@ export const therapyTreatments: TherapyTreatment[] = [
     regionId: "columna-pelvicos",
     title: "Infiltración de columna lumbar",
     imageLabel: "Infiltración de columna lumbar",
-    steps: ["G", "ES", "S", "EP", "IC"],
+    steps: ["G", "ES", "S", "EG", "EM", "EP", "M", "IC", "VCL"],
   },
 
   {
@@ -453,7 +481,7 @@ export const therapyTreatments: TherapyTreatment[] = [
     regionId: "columna-pelvicos",
     title: "Infiltración de hiato sacro",
     imageLabel: "Infiltración en hiato sacro",
-    steps: ["G", "ES", "S", "EP", "IHS"],
+    steps: ["G", "ES", "S", "EG", "EM", "EP", "M", "IHS", "VCL"],
   },
 
   {
@@ -462,7 +490,7 @@ export const therapyTreatments: TherapyTreatment[] = [
     title: "Ozonoterapia",
     description: "Infiltración de ozono para reducir inflamación y dolor.",
     imageLabel: "Ozonoterapia en columna",
-    steps: ["G", "IC"],
+    steps: ["G", "S", "ICO", "VCL"],
   },
 ];
 

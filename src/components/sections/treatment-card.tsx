@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -19,10 +20,69 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
+/* =========================================
+   TARJETA DE SELECCIÓN
+========================================= */
+
 type TreatmentCardProps = {
+  treatment: TherapyTreatment;
+  onSelect: () => void;
+};
+
+export function TreatmentCard({
+  treatment,
+  onSelect,
+}: TreatmentCardProps) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className="border-border bg-surface group flex h-full flex-col overflow-hidden rounded-3xl border text-left shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+    >
+      {treatment.image ? (
+        <MediaFrame
+          src={treatment.image}
+          alt={`Imagen de ${treatment.title}`}
+          label={treatment.imageLabel}
+          className="h-56 w-full sm:h-64"
+          sizes="(min-width: 768px) 50vw, 100vw"
+        />
+      ) : (
+        <div className="bg-primary/10 flex h-56 w-full items-center justify-center sm:h-64">
+          <span className="text-primary/60 text-xs font-semibold tracking-[0.2em] uppercase">
+            Procedimiento
+          </span>
+        </div>
+      )}
+
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="text-primary-dark text-xl font-semibold">
+          {treatment.title}
+        </h3>
+
+        {treatment.description ? (
+          <p className="text-text-muted mt-3 text-sm leading-relaxed">
+            {treatment.description}
+          </p>
+        ) : null}
+
+        <span className="text-primary mt-5 text-sm font-semibold transition-colors group-hover:underline">
+          Ver procedimiento →
+        </span>
+      </div>
+    </button>
+  );
+}
+
+/* =========================================
+   DETALLE DEL TRATAMIENTO
+========================================= */
+
+type TreatmentDetailProps = {
   treatment: TherapyTreatment;
   activities: Record<TherapyActivityCode, TherapyActivity>;
   labels: TherapyLabels;
+  onBack: () => void;
 };
 
 function drivePreviewUrl(fileId: string) {
@@ -30,14 +90,15 @@ function drivePreviewUrl(fileId: string) {
 }
 
 function driveImageUrl(fileId: string) {
-  return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1200`;
+  return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
 }
 
-export function TreatmentCard({
+export function TreatmentDetail({
   treatment,
   activities,
   labels,
-}: TreatmentCardProps) {
+  onBack,
+}: TreatmentDetailProps) {
   const trackRef = useRef<HTMLUListElement>(null);
 
   const [activeStep, setActiveStep] = useState(0);
@@ -51,19 +112,10 @@ export function TreatmentCard({
     : undefined;
 
   const media = activeActivity?.media ?? [];
-
   const total = media.length;
 
-  
+  /* NAVEGACIÓN DEL CARRUSEL */
 
-  /**
-   * Reinicia el carrusel cuando cambia la actividad.
-   */
-
-
-  /**
-   * Navegación entre archivos multimedia.
-   */
   function goTo(nextIndex: number) {
     const track = trackRef.current;
 
@@ -73,9 +125,7 @@ export function TreatmentCard({
 
     const slide = track.children[nextIndex] as HTMLElement | undefined;
 
-    if (!slide) {
-      return;
-    }
+    if (!slide) return;
 
     track.scrollTo({
       left: slide.offsetLeft,
@@ -86,13 +136,10 @@ export function TreatmentCard({
     setPlayingId(null);
   }
 
-  /**
-   * Detecta el desplazamiento manual del carrusel.
-   */
   function handleScroll() {
     const track = trackRef.current;
 
-    if (!track || track.clientWidth === 0) {
+    if (!track || track.clientWidth === 0 || total === 0) {
       return;
     }
 
@@ -111,176 +158,105 @@ export function TreatmentCard({
     }
   }
 
-  /**
-   * Cambia la actividad seleccionada.
-   */
-  function handleStepChange(stepIndex: number) {
-  setActiveStep(stepIndex);
-  setIndex(0);
-  setPlayingId(null);
+  /* CAMBIO DE ACTIVIDAD */
 
-  trackRef.current?.scrollTo({
-    left: 0,
-    behavior: "auto",
-  });
-}
+  function handleStepChange(stepIndex: number) {
+    setActiveStep(stepIndex);
+    setIndex(0);
+    setPlayingId(null);
+  }
 
   return (
-    <article className="border-border bg-surface flex h-full flex-col overflow-hidden rounded-3xl border shadow-sm">
+    <section className="border-border bg-surface overflow-hidden rounded-3xl border shadow-sm">
 
-      {/* IMAGEN PRINCIPAL DEL TRATAMIENTO */}
+      {/* VOLVER AL CATÁLOGO */}
 
-      <div>
-        {treatment.image ? (
-          <MediaFrame
-            src={treatment.image}
-            alt={`Imagen de ${treatment.title}`}
-            label={treatment.imageLabel}
-            className="h-56 w-full sm:h-64"
-            sizes="(min-width: 768px) 50vw, 100vw"
-          />
-        ) : (
-          <div className="bg-primary/10 flex h-56 w-full items-center justify-center sm:h-64">
-            <span className="text-primary/60 text-xs font-semibold tracking-[0.2em] uppercase">
-              {labels.imagePlaceholder}
-            </span>
-          </div>
-        )}
-
-        <div className="bg-primary-dark px-5 py-4 text-center">
-          <h3 className="text-lg leading-snug font-semibold text-white">
-            {treatment.title}
-          </h3>
-        </div>
+      <div className="border-border border-b px-5 py-4 sm:px-7">
+        <button
+          type="button"
+          onClick={onBack}
+          className="text-primary-dark flex items-center gap-2 text-sm font-semibold transition-colors hover:text-primary"
+        >
+          <IconChevronLeft className="size-4" />
+          Volver a procedimientos
+        </button>
       </div>
 
-      {/* CONTENIDO DEL TRATAMIENTO */}
+      {/* CONTENIDO PRINCIPAL */}
 
-      <div className="bg-primary text-on-primary flex flex-1 flex-col">
+      <div className="grid items-start gap-8 p-4 sm:p-7 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-10 lg:p-9">
 
-        {/* DESCRIPCIÓN */}
+        {/* COLUMNA IZQUIERDA: CARRUSEL */}
 
-        <div className="p-5 pb-3 sm:px-6">
-          {treatment.description ? (
-            <p className="text-sm leading-[1.8] text-white/85">
-              {treatment.description}
+        <div className="min-w-0">
+
+          <div className="mb-5">
+            <p className="text-primary text-xs font-semibold tracking-[0.25em] uppercase">
+              Galería del procedimiento
             </p>
-          ) : null}
-        </div>
 
-        {/* NAVEGACIÓN ENTRE ACTIVIDADES */}
-
-        <div className="px-5 pt-3 sm:px-6">
-          <p className="text-[11px] font-semibold tracking-[0.2em] text-white/55 uppercase">
-            {labels.steps}
-          </p>
-
-          <div
-            role="group"
-            aria-label={labels.steps}
-            className="mt-3 flex flex-wrap gap-2"
-          >
-            {treatment.steps.map((code, stepIndex) => {
-              const activity = activities[code];
-
-              const isActive = activeStep === stepIndex;
-
-              return (
-                <button
-                  key={`${code}-${stepIndex}`}
-                  type="button"
-                  onClick={() => handleStepChange(stepIndex)}
-                  aria-pressed={isActive}
-                  title={activity.title}
-                  className={cn(
-                    "flex size-10 items-center justify-center rounded-xl border text-xs font-bold transition-colors",
-                    isActive
-                      ? "border-white bg-white text-primary-dark shadow-sm"
-                      : "border-white/25 bg-white/10 text-white hover:bg-white/20",
-                  )}
-                >
-                  {code}
-                </button>
-              );
-            })}
+            <h2 className="text-primary-dark mt-2 text-2xl font-semibold sm:text-3xl">
+              {treatment.title}
+            </h2>
           </div>
-        </div>
 
-        {/* ACTIVIDAD SELECCIONADA */}
+          <div className="bg-primary-dark relative overflow-hidden rounded-2xl">
 
-        {activeActivity ? (
-          <div className="px-5 pt-5 sm:px-6">
-            <h4 className="text-base font-semibold text-white">
-              {activeActivity.title}
-            </h4>
+            {total > 0 ? (
+              <ul
+                key={`${treatment.slug}-${activeCode}`}
+                ref={trackRef}
+                onScroll={handleScroll}
+                aria-label={activeActivity?.title ?? treatment.title}
+                className="relative flex aspect-video w-full snap-x snap-mandatory overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {media.map((item) => {
+                  const isPlaying =
+                    playingId === item.id &&
+                    Boolean(item.driveFileId);
 
-            {activeActivity.description ? (
-              <p className="mt-2 text-sm leading-relaxed text-white/75">
-                {activeActivity.description}
-              </p>
-            ) : null}
-          </div>
-        ) : null}
+                  return (
+                    <li
+                      key={item.id}
+                      className="h-full w-full min-w-full snap-start"
+                      aria-label={item.title}
+                    >
+                      <div className="relative flex h-full w-full items-center justify-center">
 
-        {/* CARRUSEL MULTIMEDIA */}
-
-        <div className="mt-4">
-          {total > 0 ? (
-            <ul
-              key={activeCode}
-              ref={trackRef}
-              onScroll={handleScroll}
-              aria-label={activeActivity?.title ?? treatment.title}
-              className="relative flex h-[530px] snap-x snap-mandatory overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:h-[400px] lg:h-[640px]"
-            >
-              {media.map((item) => {
-                const isPlaying =
-                  playingId === item.id &&
-                  Boolean(item.driveFileId);
-
-                return (
-                  <li
-                    key={item.id}
-                    className="w-full min-w-full snap-start"
-                    aria-label={item.title}
-                  >
-                    <div className="flex h-full w-full items-center justify-center p-1">
-
-                      <div className="bg-primary-dark/70 relative aspect-[4/5] w-[min(100%,280px)] shrink-0 overflow-hidden rounded-2xl sm:w-[315px]">
                         {/* VIDEO */}
 
                         {item.type === "video" ? (
                           isPlaying ? (
                             <iframe
-  src={drivePreviewUrl(item.driveFileId)}
-  title={item.title}
-  allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-  allowFullScreen
-  loading="eager"
-  referrerPolicy="strict-origin-when-cross-origin"
-  className="absolute inset-0 h-full w-full border-0"
-/>
+                              src={drivePreviewUrl(item.driveFileId)}
+                              title={item.title}
+                              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                              allowFullScreen
+                              loading="eager"
+                              referrerPolicy="strict-origin-when-cross-origin"
+                              className="absolute inset-0 h-full w-full border-0"
+                            />
                           ) : (
                             <button
                               type="button"
                               disabled={!item.driveFileId}
                               onClick={() => setPlayingId(item.id)}
                               className={cn(
-                                "flex h-full w-full flex-col items-center justify-center gap-3 px-4 text-center transition-colors",
+                                "flex h-full w-full flex-col items-center justify-center gap-4 px-6 text-center transition-colors",
                                 item.driveFileId
                                   ? "hover:bg-white/10"
-                                  : "cursor-not-allowed border border-dashed border-white/25",
+                                  : "cursor-not-allowed",
                               )}
                             >
-                              <span className="flex size-12 items-center justify-center rounded-full bg-white/15 text-white">
-                                <IconPlay className="size-5" />
+                              <span className="flex size-16 items-center justify-center rounded-full bg-white/15 text-white">
+                                <IconPlay className="size-7" />
                               </span>
 
-                              <span className="text-sm font-medium text-white">
+                              <span className="text-base font-medium text-white sm:text-lg">
                                 {item.title}
                               </span>
 
-                              <span className="text-[11px] font-semibold tracking-[0.2em] text-white/60 uppercase">
+                              <span className="text-xs font-semibold tracking-[0.2em] text-white/60 uppercase">
                                 {item.driveFileId
                                   ? labels.videoPlay
                                   : labels.videoPending}
@@ -291,21 +267,23 @@ export function TreatmentCard({
                           /* IMAGEN */
 
                           item.driveFileId ? (
-                            <Image
-  src={driveImageUrl(item.driveFileId)}
-  alt={item.title}
-  fill
-  unoptimized
-  sizes="(max-width: 768px) 100vw, 400px"
-  className="object-contain"
-/>
+                            <div className="absolute inset-0">
+                              <Image
+                                src={driveImageUrl(item.driveFileId)}
+                                alt={item.title}
+                                fill
+                                unoptimized
+                                sizes="(max-width: 1024px) 100vw, 65vw"
+                                className="object-contain"
+                              />
+                            </div>
                           ) : (
-                            <div className="flex h-full flex-col items-center justify-center gap-3 border border-dashed border-white/25 px-4 text-center">
+                            <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
                               <span className="text-sm text-white">
                                 {item.title}
                               </span>
 
-                              <span className="text-[11px] text-white/60">
+                              <span className="text-xs text-white/60">
                                 {labels.videoPending}
                               </span>
                             </div>
@@ -313,70 +291,210 @@ export function TreatmentCard({
                         )}
 
                       </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <div className="flex h-[280px] flex-col items-center justify-center gap-3 px-6 text-center sm:h-[320px]">
-              <span className="flex size-14 items-center justify-center rounded-full bg-white/10">
-                <IconPlay className="size-6 text-white/70" />
-              </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <div className="flex aspect-video flex-col items-center justify-center gap-3 px-6 text-center">
+                <span className="flex size-16 items-center justify-center rounded-full bg-white/10">
+                  <IconPlay className="size-7 text-white/70" />
+                </span>
 
-              <p className="text-sm font-medium text-white">
-                {labels.videoPending}
+                <p className="text-sm font-medium text-white">
+                  {labels.videoPending}
+                </p>
+
+                <p className="max-w-xs text-xs leading-relaxed text-white/60">
+                  Todavía no hay imágenes ni videos disponibles para esta actividad.
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* CONTROLES DEL CARRUSEL */}
+
+          <div className="mt-4 flex items-center justify-between gap-3">
+
+            <p
+              aria-live="polite"
+              className="text-text-muted text-xs font-semibold tracking-wide"
+            >
+              {total > 0
+                ? labels.slideLabel
+                    .replace("{current}", String(index + 1))
+                    .replace("{total}", String(total))
+                : "0 diapositivas"}
+            </p>
+
+            {total > 1 ? (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => goTo(index - 1)}
+                  disabled={index === 0}
+                  aria-label={labels.previousSlide}
+                  className="border-border text-primary-dark flex size-10 items-center justify-center rounded-full border transition-colors hover:bg-primary/10 disabled:opacity-35"
+                >
+                  <IconChevronLeft className="size-4" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => goTo(index + 1)}
+                  disabled={index === total - 1}
+                  aria-label={labels.nextSlide}
+                  className="border-border text-primary-dark flex size-10 items-center justify-center rounded-full border transition-colors hover:bg-primary/10 disabled:opacity-35"
+                >
+                  <IconChevronRight className="size-4" />
+                </button>
+              </div>
+            ) : null}
+          </div>
+
+          {/* ACTIVIDAD ACTUAL */}
+
+          {activeActivity ? (
+            <div className="border-border mt-6 border-t pt-5">
+              <p className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
+                Actividad seleccionada
               </p>
 
-              <p className="max-w-xs text-xs leading-relaxed text-white/60">
-                Todavía no hay imágenes ni videos disponibles para esta actividad.
-              </p>
-            </div>
-          )}
-        </div>
+              <h3 className="text-primary-dark mt-2 text-lg font-semibold">
+                {activeActivity.title}
+              </h3>
 
-        {/* CONTROLES DEL CARRUSEL */}
-
-        <div className="mt-auto flex items-center justify-between gap-3 px-4 pb-4 pt-2 sm:px-5">
-
-          <p
-            aria-live="polite"
-            className="text-[11px] font-semibold tracking-[0.18em] text-white/60"
-          >
-            {total > 0
-              ? labels.slideLabel
-                  .replace("{current}", String(index + 1))
-                  .replace("{total}", String(total))
-              : "0 diapositivas"}
-          </p>
-
-          {total > 1 ? (
-            <div className="flex items-center gap-2">
-
-              <button
-                type="button"
-                onClick={() => goTo(index - 1)}
-                disabled={index === 0}
-                aria-label={labels.previousSlide}
-                className="flex size-10 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:bg-white/10 disabled:opacity-35 disabled:hover:bg-transparent"
-              >
-                <IconChevronLeft className="size-4" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => goTo(index + 1)}
-                disabled={index === total - 1}
-                aria-label={labels.nextSlide}
-                className="flex size-10 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:bg-white/10 disabled:opacity-35 disabled:hover:bg-transparent"
-              >
-                <IconChevronRight className="size-4" />
-              </button>
-
+              {activeActivity.description ? (
+                <p className="text-text-muted mt-2 text-sm leading-relaxed">
+                  {activeActivity.description}
+                </p>
+              ) : null}
             </div>
           ) : null}
         </div>
+
+        {/* COLUMNA DERECHA: INFORMACIÓN Y ETAPAS */}
+
+        <div className="flex min-w-0 flex-col gap-6">
+
+          {/* DESCRIPCIÓN */}
+
+          <div>
+            <p className="text-primary text-xs font-semibold tracking-[0.25em] uppercase">
+              Conoce el procedimiento
+            </p>
+
+            <h3 className="text-primary-dark mt-3 text-xl font-semibold">
+              {treatment.title}
+            </h3>
+
+            {treatment.description ? (
+              <p className="text-text-muted mt-3 text-sm leading-[1.9]">
+                {treatment.description}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="border-border border-t" />
+
+          {/* ETAPAS DEL PROCEDIMIENTO */}
+
+          <div>
+            <p className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
+              {labels.steps}
+            </p>
+
+            <p className="text-text-muted mt-2 text-sm">
+              Selecciona una actividad para consultar sus imágenes y videos.
+            </p>
+
+            <div className="mt-5 flex flex-col gap-3">
+              {treatment.steps.map((code, stepIndex) => {
+                const activity = activities[code];
+                const isActive = activeStep === stepIndex;
+
+                return (
+                  <button
+                    key={`${code}-${stepIndex}`}
+                    type="button"
+                    onClick={() => handleStepChange(stepIndex)}
+                    aria-pressed={isActive}
+                    className={cn(
+                      "flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition-all",
+                      isActive
+                        ? "border-primary bg-primary/10 shadow-sm"
+                        : "border-border bg-surface hover:border-primary/40 hover:bg-primary/5",
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "flex size-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold",
+                        isActive
+                          ? "bg-primary text-on-primary"
+                          : "bg-primary/10 text-primary-dark",
+                      )}
+                    >
+                      {stepIndex + 1}
+                    </span>
+
+                    <span className="min-w-0 flex-1">
+                      <span
+                        className={cn(
+                          "block text-sm font-semibold",
+                          isActive
+                            ? "text-primary-dark"
+                            : "text-text",
+                        )}
+                      >
+                        {activity?.title ?? code}
+                      </span>
+
+                      <span className="text-text-muted mt-1 block text-xs">
+                        {activity?.media?.length ?? 0} archivos multimedia
+                      </span>
+                    </span>
+
+                    <IconChevronRight
+                      className={cn(
+                        "size-4 shrink-0",
+                        isActive ? "text-primary" : "text-text-muted",
+                      )}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* INDICADOR DE PROGRESO */}
+
+          <div className="border-border mt-auto border-t pt-5">
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-text-muted text-xs font-semibold">
+                Etapa {activeStep + 1} de {treatment.steps.length}
+              </span>
+
+              <span className="text-primary text-xs font-semibold">
+                {activeActivity?.title ?? ""}
+              </span>
+            </div>
+
+            <div className="mt-3 flex gap-1.5">
+              {treatment.steps.map((_, stepIndex) => (
+                <div
+                  key={stepIndex}
+                  className={cn(
+                    "h-1 flex-1 rounded-full transition-colors",
+                    stepIndex <= activeStep
+                      ? "bg-primary"
+                      : "bg-border",
+                  )}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </article>
+    </section>
   );
 }
