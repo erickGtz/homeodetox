@@ -5,6 +5,19 @@ import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
+import { Lora, Plus_Jakarta_Sans } from "next/font/google";
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-MX" data-scroll-behavior="smooth" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="es-MX" data-scroll-behavior="smooth" className={`${lora.variable} ${fraunces.variable} ${plusJakarta.variable}`}>
       <body className="flex min-h-screen flex-col">
         <a
           href="#contenido"

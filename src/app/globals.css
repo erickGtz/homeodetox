@@ -21,6 +21,9 @@
 @theme inline {
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
+  --font-heading: var(--font-lora);
+  --font-sans: var(--font-plus-jakarta);
+
 }
 
 @layer base {
