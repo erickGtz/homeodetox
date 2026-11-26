@@ -1,0 +1,359 @@
+{
+  "generatedAt": "2026-11-26T09:42:45.476Z",
+  "bucket": "homeodetox-media",
+  "totalFiles": 35,
+  "totalImages": 19,
+  "totalVideos": 16,
+  "files": [
+    {
+      "key": "Bloqueos y sedacion/2 Canalizando al paciente .jpg",
+      "folder": "Bloqueos y sedacion",
+      "filename": "2 Canalizando al paciente .jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 359310,
+      "lastModified": "2026-11-25T10:45:09.972Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Bloqueos%20y%20sedacion/2%20Canalizando%20al%20paciente%20.jpg"
+    },
+    {
+      "key": "Bloqueos y sedacion/4 bloqueo.jpg",
+      "folder": "Bloqueos y sedacion",
+      "filename": "4 bloqueo.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 766175,
+      "lastModified": "2026-11-25T10:45:10.315Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Bloqueos%20y%20sedacion/4%20bloqueo.jpg"
+    },
+    {
+      "key": "Bloqueos y sedacion/5 BLOQUEO 05-23-20.webm",
+      "folder": "Bloqueos y sedacion",
+      "filename": "5 BLOQUEO 05-23-20.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 938306,
+      "lastModified": "2026-11-25T10:45:10.708Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Bloqueos%20y%20sedacion/5%20BLOQUEO%2005-23-20.webm"
+    },
+    {
+      "key": "Bloqueos y sedacion/6 Bloqueo epidural.jpg",
+      "folder": "Bloqueos y sedacion",
+      "filename": "6 Bloqueo epidural.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 136837,
+      "lastModified": "2026-11-25T10:45:09.821Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Bloqueos%20y%20sedacion/6%20Bloqueo%20epidural.jpg"
+    },
+    {
+      "key": "Bloqueos y sedacion/7 SEDACION 24-38.webm",
+      "folder": "Bloqueos y sedacion",
+      "filename": "7 SEDACION 24-38.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 1666060,
+      "lastModified": "2026-11-25T10:45:10.733Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Bloqueos%20y%20sedacion/7%20SEDACION%2024-38.webm"
+    },
+    {
+      "key": "Extraccion grasa/11.1 USG PARED ABDOMINAL REVISION.webm",
+      "folder": "Extraccion grasa",
+      "filename": "11.1 USG PARED ABDOMINAL REVISION.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 3788149,
+      "lastModified": "2026-11-25T12:12:21.933Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/11.1%20USG%20PARED%20ABDOMINAL%20REVISION.webm"
+    },
+    {
+      "key": "Extraccion grasa/12 ASEPSIA PREPARACION PACIENTE.jpg",
+      "folder": "Extraccion grasa",
+      "filename": "12 ASEPSIA PREPARACION PACIENTE.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 253971,
+      "lastModified": "2026-11-25T12:12:21.096Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/12%20ASEPSIA%20PREPARACION%20PACIENTE.jpg"
+    },
+    {
+      "key": "Extraccion grasa/12.1 ASEPSIA 3-6.webm",
+      "folder": "Extraccion grasa",
+      "filename": "12.1 ASEPSIA 3-6.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 333418,
+      "lastModified": "2026-11-25T12:12:20.397Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/12.1%20ASEPSIA%203-6.webm"
+    },
+    {
+      "key": "Extraccion grasa/13 PUNCION PARA TUMESCENCIA.jpg",
+      "folder": "Extraccion grasa",
+      "filename": "13 PUNCION PARA TUMESCENCIA.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 339380,
+      "lastModified": "2026-11-25T12:12:21.517Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/13%20PUNCION%20PARA%20TUMESCENCIA.jpg"
+    },
+    {
+      "key": "Extraccion grasa/14 PUNCION (1).webm",
+      "folder": "Extraccion grasa",
+      "filename": "14 PUNCION (1).webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 2188268,
+      "lastModified": "2026-11-25T12:12:20.212Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/14%20PUNCION%20(1).webm"
+    },
+    {
+      "key": "Extraccion grasa/15 TUMESCENCIA.jpg",
+      "folder": "Extraccion grasa",
+      "filename": "15 TUMESCENCIA.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 289576,
+      "lastModified": "2026-11-25T12:12:21.023Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/15%20TUMESCENCIA.jpg"
+    },
+    {
+      "key": "Extraccion grasa/16 TUMESCENCIA 2-4.webm",
+      "folder": "Extraccion grasa",
+      "filename": "16 TUMESCENCIA 2-4.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 256038,
+      "lastModified": "2026-11-25T12:12:20.371Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/16%20TUMESCENCIA%202-4.webm"
+    },
+    {
+      "key": "Extraccion grasa/17 TUMESCENCIA 2-10.webm",
+      "folder": "Extraccion grasa",
+      "filename": "17 TUMESCENCIA 2-10.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 1109924,
+      "lastModified": "2026-11-25T12:12:19.550Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/17%20TUMESCENCIA%202-10.webm"
+    },
+    {
+      "key": "Extraccion grasa/18 EXTRACCION DE GRASA 2-20.webm",
+      "folder": "Extraccion grasa",
+      "filename": "18 EXTRACCION DE GRASA 2-20.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 2366683,
+      "lastModified": "2026-11-25T12:12:20.638Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/18%20EXTRACCION%20DE%20GRASA%202-20.webm"
+    },
+    {
+      "key": "Extraccion grasa/19 GRASA EXTRAIDA.jpg",
+      "folder": "Extraccion grasa",
+      "filename": "19 GRASA EXTRAIDA.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 305581,
+      "lastModified": "2026-11-25T12:12:19.466Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/19%20GRASA%20EXTRAIDA.jpg"
+    },
+    {
+      "key": "Extraccion grasa/37 APOSITOS ABDOMEN.jpg",
+      "folder": "Extraccion grasa",
+      "filename": "37 APOSITOS ABDOMEN.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 178489,
+      "lastModified": "2026-11-25T12:12:19.438Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/37%20APOSITOS%20ABDOMEN.jpg"
+    },
+    {
+      "key": "Extraccion grasa/38 FAJA PACIENTE.jpg",
+      "folder": "Extraccion grasa",
+      "filename": "38 FAJA PACIENTE.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 344890,
+      "lastModified": "2026-11-25T12:12:18.521Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/38%20FAJA%20PACIENTE.jpg"
+    },
+    {
+      "key": "Extraccion grasa/39 FAJA PACIENTE.jpg",
+      "folder": "Extraccion grasa",
+      "filename": "39 FAJA PACIENTE.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 363910,
+      "lastModified": "2026-11-25T12:12:18.411Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20grasa/39%20FAJA%20PACIENTE.jpg"
+    },
+    {
+      "key": "Extraccion medula/19.1 EXTRACCION DE MEDULA 2-5.webm",
+      "folder": "Extraccion medula",
+      "filename": "19.1 EXTRACCION DE MEDULA 2-5.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 138951,
+      "lastModified": "2026-11-25T12:31:47.636Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20medula/19.1%20EXTRACCION%20DE%20MEDULA%202-5.webm"
+    },
+    {
+      "key": "Extraccion medula/20 EXTRACCION DE MEDULA 2-10.webm",
+      "folder": "Extraccion medula",
+      "filename": "20 EXTRACCION DE MEDULA 2-10.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 443654,
+      "lastModified": "2026-11-25T12:31:47.842Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20medula/20%20EXTRACCION%20DE%20MEDULA%202-10.webm"
+    },
+    {
+      "key": "Extraccion plasma/21 EXTRACION DE PLASMA.jpg",
+      "folder": "Extraccion plasma",
+      "filename": "21 EXTRACION DE PLASMA.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 117270,
+      "lastModified": "2026-11-25T12:17:52.658Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20plasma/21%20EXTRACION%20DE%20PLASMA.jpg"
+    },
+    {
+      "key": "Extraccion sangre/1  EXTRACCION DE SANGRE 02-06.webm",
+      "folder": "Extraccion sangre",
+      "filename": "1  EXTRACCION DE SANGRE 02-06.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 272133,
+      "lastModified": "2026-11-25T10:36:08.837Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Extraccion%20sangre/1%20%20EXTRACCION%20DE%20SANGRE%2002-06.webm"
+    },
+    {
+      "key": "Infiltraccion Rodillas/24  ASEPSIA INFILTRACION RODILLAS.jpg",
+      "folder": "Infiltraccion Rodillas",
+      "filename": "24  ASEPSIA INFILTRACION RODILLAS.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 213980,
+      "lastModified": "2026-11-25T13:16:42.187Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/24%20%20ASEPSIA%20INFILTRACION%20RODILLAS.jpg"
+    },
+    {
+      "key": "Infiltraccion Rodillas/25 PUNCION INFILTRACION RODILLAS.jpg",
+      "folder": "Infiltraccion Rodillas",
+      "filename": "25 PUNCION INFILTRACION RODILLAS.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 194221,
+      "lastModified": "2026-11-25T13:16:41.940Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/25%20PUNCION%20INFILTRACION%20RODILLAS.jpg"
+    },
+    {
+      "key": "Infiltraccion Rodillas/26 INFILTRACION RODILLAS PREPARADO.jpg",
+      "folder": "Infiltraccion Rodillas",
+      "filename": "26 INFILTRACION RODILLAS PREPARADO.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 211747,
+      "lastModified": "2026-11-25T13:16:42.122Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/26%20INFILTRACION%20RODILLAS%20PREPARADO.jpg"
+    },
+    {
+      "key": "Infiltraccion Rodillas/27 INFILTRACION OZONO ROD DER..jpg",
+      "folder": "Infiltraccion Rodillas",
+      "filename": "27 INFILTRACION OZONO ROD DER..jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 252713,
+      "lastModified": "2026-11-25T13:16:41.983Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/27%20INFILTRACION%20OZONO%20ROD%20DER..jpg"
+    },
+    {
+      "key": "Infiltraccion Rodillas/28 INFILTRACION OZONO RODILLA IZQ..jpg",
+      "folder": "Infiltraccion Rodillas",
+      "filename": "28 INFILTRACION OZONO RODILLA IZQ..jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 184586,
+      "lastModified": "2026-11-25T13:16:42.584Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/28%20INFILTRACION%20OZONO%20RODILLA%20IZQ..jpg"
+    },
+    {
+      "key": "Infiltraccion Rodillas/29 ACUTOMO SIGNO DE PATA DE GANSO.webm",
+      "folder": "Infiltraccion Rodillas",
+      "filename": "29 ACUTOMO SIGNO DE PATA DE GANSO.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 385678,
+      "lastModified": "2026-11-25T13:16:42.006Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/29%20ACUTOMO%20SIGNO%20DE%20PATA%20DE%20GANSO.webm"
+    },
+    {
+      "key": "Mezcla/22 MEZCLA LIPO MEDULA PLASMA.jpg",
+      "folder": "Mezcla",
+      "filename": "22 MEZCLA LIPO MEDULA PLASMA.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 514643,
+      "lastModified": "2026-11-25T12:49:37.956Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Mezcla/22%20MEZCLA%20LIPO%20MEDULA%20PLASMA.jpg"
+    },
+    {
+      "key": "Mezcla/23 MEZCLA LIPO MEDULA PLASMA  12-21.webm",
+      "folder": "Mezcla",
+      "filename": "23 MEZCLA LIPO MEDULA PLASMA  12-21.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 1120822,
+      "lastModified": "2026-11-25T12:49:37.897Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Mezcla/23%20MEZCLA%20LIPO%20MEDULA%20PLASMA%20%2012-21.webm"
+    },
+    {
+      "key": "Solucion de Klein/10 SOLUCION KLEIN  13 -25.webm",
+      "folder": "Solucion de Klein",
+      "filename": "10 SOLUCION KLEIN  13 -25.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 539072,
+      "lastModified": "2026-11-25T14:17:59.467Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Solucion%20de%20Klein/10%20SOLUCION%20KLEIN%20%2013%20-25.webm"
+    },
+    {
+      "key": "Solucion de Klein/11 VIDEO EPINEFRINA 14 -18.webm",
+      "folder": "Solucion de Klein",
+      "filename": "11 VIDEO EPINEFRINA 14 -18.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 260718,
+      "lastModified": "2026-11-25T14:17:59.337Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Solucion%20de%20Klein/11%20VIDEO%20EPINEFRINA%2014%20-18.webm"
+    },
+    {
+      "key": "Solucion de Klein/8 PREPARACION SOLUCION DE KLEIN (1).jpg",
+      "folder": "Solucion de Klein",
+      "filename": "8 PREPARACION SOLUCION DE KLEIN (1).jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 393917,
+      "lastModified": "2026-11-25T14:17:59.722Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Solucion%20de%20Klein/8%20PREPARACION%20SOLUCION%20DE%20KLEIN%20(1).jpg"
+    },
+    {
+      "key": "Solucion de Klein/9 SOLUCION KLEIN 13-19.webm",
+      "folder": "Solucion de Klein",
+      "filename": "9 SOLUCION KLEIN 13-19.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 356032,
+      "lastModified": "2026-11-25T14:17:59.471Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Solucion%20de%20Klein/9%20SOLUCION%20KLEIN%2013-19.webm"
+    },
+    {
+      "key": "Vendoletes rodilla/30 COLOCACION DE VENDOLETES RODILLAS.jpg",
+      "folder": "Vendoletes rodilla",
+      "filename": "30 COLOCACION DE VENDOLETES RODILLAS.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 179528,
+      "lastModified": "2026-11-25T13:17:18.820Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Vendoletes%20rodilla/30%20COLOCACION%20DE%20VENDOLETES%20RODILLAS.jpg"
+    }
+  ]
+}

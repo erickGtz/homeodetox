@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { WhatsAppFab } from "@/components/layout/whatsapp-fab";
 import { siteConfig } from "@/lib/site-config";
+import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-MX" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="es-MX" data-scroll-behavior="smooth" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="flex min-h-screen flex-col">
         <a
           href="#contenido"

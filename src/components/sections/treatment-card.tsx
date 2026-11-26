@@ -77,6 +77,14 @@ export function TreatmentCard({
 /* =========================================
    DETALLE DEL TRATAMIENTO
 ========================================= */
+function getImageClassName(
+  width: number,
+  height: number,
+) {
+  return width >= height
+    ? "object-cover"
+    : "object-contain";
+}
 
 type TreatmentDetailProps = {
   treatment: TherapyTreatment;
@@ -84,14 +92,6 @@ type TreatmentDetailProps = {
   labels: TherapyLabels;
   onBack: () => void;
 };
-
-function drivePreviewUrl(fileId: string) {
-  return `https://drive.google.com/file/d/${fileId}/preview`;
-}
-
-function driveImageUrl(fileId: string) {
-  return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
-}
 
 export function TreatmentDetail({
   treatment,
@@ -210,90 +210,94 @@ export function TreatmentDetail({
                 aria-label={activeActivity?.title ?? treatment.title}
                 className="relative flex aspect-video w-full snap-x snap-mandatory overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
-                {media.map((item) => {
-                  const isPlaying =
-                    playingId === item.id &&
-                    Boolean(item.driveFileId);
+                
+{media.map((item) => {
+  const isPlaying = playingId === item.id && Boolean(item.url);
 
-                  return (
-                    <li
-                      key={item.id}
-                      className="h-full w-full min-w-full snap-start"
-                      aria-label={item.title}
-                    >
-                      <div className="relative flex h-full w-full items-center justify-center">
+  return (
+    <li
+      key={item.id}
+      className="h-full w-full min-w-full snap-start"
+      aria-label={item.title}
+    >
+      <div className="relative flex h-full w-full items-center justify-center">
 
-                        {/* VIDEO */}
+        {/* VIDEO */}
+        {item.type === "video" ? (
+          isPlaying ? (
+            <video
+              src={item.url}
+              title={item.title}
+              controls
+              autoPlay
+              playsInline
+              className="absolute inset-0 h-full w-full object-contain"
+            />
+          ) : (
+            <button
+              type="button"
+              disabled={!item.url}
+              onClick={() => setPlayingId(item.id)}
+              className={cn(
+                "flex h-full w-full flex-col items-center justify-center gap-4 px-6 text-center transition-colors",
+                item.url
+                  ? "hover:bg-white/10"
+                  : "cursor-not-allowed",
+              )}
+            >
+              <span className="flex size-16 items-center justify-center rounded-full bg-white/15 text-white">
+                <IconPlay className="size-7" />
+              </span>
 
-                        {item.type === "video" ? (
-                          isPlaying ? (
-                            <iframe
-                              src={drivePreviewUrl(item.driveFileId)}
-                              title={item.title}
-                              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                              allowFullScreen
-                              loading="eager"
-                              referrerPolicy="strict-origin-when-cross-origin"
-                              className="absolute inset-0 h-full w-full border-0"
-                            />
-                          ) : (
-                            <button
-                              type="button"
-                              disabled={!item.driveFileId}
-                              onClick={() => setPlayingId(item.id)}
-                              className={cn(
-                                "flex h-full w-full flex-col items-center justify-center gap-4 px-6 text-center transition-colors",
-                                item.driveFileId
-                                  ? "hover:bg-white/10"
-                                  : "cursor-not-allowed",
-                              )}
-                            >
-                              <span className="flex size-16 items-center justify-center rounded-full bg-white/15 text-white">
-                                <IconPlay className="size-7" />
-                              </span>
+              <span className="text-base font-medium text-white sm:text-lg">
+                {item.title}
+              </span>
 
-                              <span className="text-base font-medium text-white sm:text-lg">
-                                {item.title}
-                              </span>
+              <span className="text-xs font-semibold tracking-[0.2em] text-white/60 uppercase">
+                {item.url ? labels.videoPlay : labels.videoPending}
+              </span>
+            </button>
+          )
+        ) : (
+          /* IMAGEN */
+          item.url ? (
+            <div className="absolute inset-0">
+              <Image
+  src={item.url}
+  alt={item.title}
+  fill
+  unoptimized
+  sizes="(max-width: 1024px) 100vw, 65vw"
+  className="object-contain"
+  onLoad={(event) => {
+    const img = event.currentTarget;
 
-                              <span className="text-xs font-semibold tracking-[0.2em] text-white/60 uppercase">
-                                {item.driveFileId
-                                  ? labels.videoPlay
-                                  : labels.videoPending}
-                              </span>
-                            </button>
-                          )
-                        ) : (
-                          /* IMAGEN */
+    img.classList.remove("object-cover", "object-contain");
 
-                          item.driveFileId ? (
-                            <div className="absolute inset-0">
-                              <Image
-                                src={driveImageUrl(item.driveFileId)}
-                                alt={item.title}
-                                fill
-                                unoptimized
-                                sizes="(max-width: 1024px) 100vw, 65vw"
-                                className="object-contain"
-                              />
-                            </div>
-                          ) : (
-                            <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
-                              <span className="text-sm text-white">
-                                {item.title}
-                              </span>
+    img.classList.add(
+      getImageClassName(img.naturalWidth, img.naturalHeight),
+    );
+  }}
+/>
+            </div>
+          ) : (
+            <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
+              <span className="text-sm text-white">
+                {item.title}
+              </span>
 
-                              <span className="text-xs text-white/60">
-                                {labels.videoPending}
-                              </span>
-                            </div>
-                          )
-                        )}
+              <span className="text-xs text-white/60">
+                {labels.videoPending}
+              </span>
+            </div>
+          )
+        )}
 
-                      </div>
-                    </li>
-                  );
-                })}
+      </div>
+    </li>
+  );
+})}
+
               </ul>
             ) : (
               <div className="flex aspect-video flex-col items-center justify-center gap-3 px-6 text-center">

@@ -1,3 +1,5 @@
+import catalogoMedia from "@/data/catalogo-media.json";
+
 export type TherapyRegionId = "rodilla" | "cadera" | "columna-pelvicos";
 
 export type TherapyRegion = {
@@ -27,6 +29,44 @@ export type TherapyActivityCode =
   | "IHS"
   | "IACF";
 
+  const activityFolders: Partial<
+  Record<TherapyActivityCode, string>
+> = {
+  G: "Bloqueos y sedacion",
+  ES: "Extraccion sangre",
+  S: "Solucion de Klein",
+  EG: "Extraccion grasa",
+  EM: "Extraccion medula",
+  EP: "Extraccion plasma",
+  M: "Mezcla",
+  IR: "Infiltraccion Rodillas",
+  VIR: "Vendoletes rodilla",
+};
+
+function getActivityMedia(code: TherapyActivityCode): TherapyMedia[] {
+  const folder = activityFolders[code];
+
+  if (!folder) return [];
+
+  return catalogoMedia.files
+    .filter((file) => file.folder === folder)
+    .flatMap((file): TherapyMedia[] => {
+      if (file.type !== "image" && file.type !== "video") {
+        return [];
+      }
+
+      return [{
+        id: file.key,
+        type: file.type,
+        title: file.filename
+          .replace(/^\d+(?:\.\d+)?\s*/, "")
+          .replace(/\.[^.]+$/, "")
+          .trim(),
+        url: file.url,
+      }];
+    });
+}
+
 /**
  * Contenido multimedia de cada actividad.
  * Los archivos se alojan externamente en Google Drive.
@@ -35,7 +75,7 @@ export type TherapyMedia = {
   id: string;
   type: "video" | "image";
   title: string;
-  driveFileId: string;
+  url: string;
 };
 
 /**
@@ -129,306 +169,95 @@ export const therapyActivities: Record<
   TherapyActivityCode,
   TherapyActivity
 > = {
-  G: {
-    code: "G",
-    title: "Preparación clínica del paciente",
-    media: [
-      { id: "g-02",
-      type: "image",
-      title: "Canalizando al paciente",
-      driveFileId: "109EixyKjuYekDBcYPMOM32YEneBk_PRd",
-      },
-      { id: "g-03",
-      type: "image",
-      title: "Bloqueo",
-      driveFileId: "1k0OxMBULfERxIKX5IiwIQh31097CreCh",
-      },
-      { id: "g-04",
-      type: "image",
-      title: "Bloqueo",
-      driveFileId: "1VN5KXQlOU6wejfKSXG8JFLn7Xb7a0NoU",
-      },
-      { id: "g-05",
-      type: "video",
-      title: "Bloqueo",
-      driveFileId: "1rbKQWwZw_pC_dwdij3Y2XMTpAJf1i_cY",
-      },
-      { id: "g-06",
-      type: "image",
-      title: "Bloqueo Epidural",
-      driveFileId: "1-QIDgJFqymY4WZK1zG07T7RQQK716bjS",
-      },
-      { id: "g-07",
-      type: "video",
-      title: "Sedación",
-      driveFileId: "1vj6qgCmIvYuX-taUVf6LDFzcBB9-9GS7",
-      },
-    ],
-  },
+G: {
+  code: "G",
+  title: "Preparación clínica del paciente",
+  media: getActivityMedia("G"),
+},
 
-  ES: {
-    code: "ES",
-    title: "Extracción de sangre",
-    media: [{
-      id: "es-01",
-      type: "video",
-      title: "Preparación del material",
-      driveFileId: "1bue1dEzEi66iekXxGfYUcL0L7QUaGtw3",
-    },],
-  },
+ES: {
+  code: "ES",
+  title: "Extracción de sangre",
+  media: getActivityMedia("ES"),
+},
 
-  S: {
-    code: "S",
-    title: "Preparación de solución tumescente",
-    media: [{
-      id: "es-08",
-      type: "video",
-      title: "PREPARACION SOLUCION DE KLEIN",
-      driveFileId: "19MIjXy89AQcfmYYfIReBYEjuk5dbh9cB",
-    },
-    {
-      id: "es-09",
-      type: "video",
-      title: "SOLUCION DE KLEIN",
-      driveFileId: "1ewchDagdgYOYkUaGPDH4j4GCjCJsO9dS",
-    },
-    {
-      id: "es-10",
-      type: "video",
-      title: "SOLUCION DE KLEIN",
-      driveFileId: "13uUNy2ICJAmzJLQZQSKpJi1fvuORusSY",
-    },
-    {
-      id: "es-11",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "1w4HCT7ivRz6Du87cqpNzMqVeKTqlMX0F",
-    },],
-  },
+S: {
+  code: "S",
+  title: "Preparación de solución tumescente",
+  media: getActivityMedia("S"),
+},
 
-  EG: {
-    code: "EG",
-    title: "Extracción de grasa",
-    media: [
-      {
-      id: "es-11.1",
-      type: "video",
-      title: "USG Pared abdominal",
-      driveFileId: "1x3Py3m-nk8uh5374zqmS_sUrPhuav2Bh",
-    },{
-      id: "es-12",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1Eb3atJni1cZlqb0uvkxrgfkbiQ_LUTKs",
-    },{
-      id: "es-12.1",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "1ObS-GScG9kaIjzrnwnipHXqG-aCuXBzS",
-    },
-    {
-      id: "es-13",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1WneUxkodsF0Hro6uY_YUjyvmQdgCXkoE",
-    },
-    {
-      id: "es-14",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "1c0l_nxAh99i064vQb2rSKo5BJmt1hftb",
-    },
-    {
-      id: "es-15",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1lxNGUk4Z9fETDIdqUIcBSK2jo4cHnUqm",
-    },
-    {
-      id: "es-16",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "1zJ7pgtOihvfvJQUkMU1hjn0bwP48cKG6",
-    },
-    {
-      id: "es-17",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "17WhkWq6GnJOmXmFWxwyUvnmku1TpZk2u",
-    },
-    {
-      id: "es-18",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "1c9ISQvSXcw7liDiHqxWH5HNpqwTfkFoD",
-    },
-    {
-      id: "es-19",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1AGHsY0tMx8ManJgDbV5-CHeMTrYjFRjD",
-    },
-    {
-      id: "es-37",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1a9i2qpf3v7aNFrxeYujv74wusPF1sxdB",
-    },
-    {
-      id: "es-38",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1Zem0j2ZHevKzOvNhqn1n04FTbSWSRjHV",
-    },
-    {
-      id: "es-39",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1YrZVYrFm3C66_5IIUjM2jubvxpPFTKiW",
-    },
-    
-    ],
-  },
+EG: {
+  code: "EG",
+  title: "Extracción de grasa",
+  media: getActivityMedia("EG"),
+},
 
-  EM: {
-    code: "EM",
-    title: "Extracción de médula",
-    media: [
-      {
-      id: "es-19.1",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "1F1cejrp8JlPqbyxyp5ndUgT5maPPNtLr",
-    },{
-      id: "es-20",
-      type: "video",
-      title: "Epinefrina",
-      driveFileId: "1h1PQWgX2pLlHfcSS42gdJIBItC6eK6ju",
-    },
-    ],
-  },
+EM: {
+  code: "EM",
+  title: "Extracción de médula",
+  media: getActivityMedia("EM"),
+},
 
-  EP: {
-    code: "EP",
-    title: "Extracción de plasma",
-    media: [
-      {
-      id: "es-20",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1Nug4xHIY6svz236N4ZDUHHivVsZ4uLej",
-    },
-    ],
-  },
-  
-  M: {
-    code: "M",
-    title: "Combinación de componentes autólogos",
-    media: [
-      {
-      id: "es-22",
-      type: "image",
-      title: "MEZCLA LIPO MEDULA PLASMA",
-      driveFileId: "1yj5TxMT_OiXnxWNeowkSlPabso2iXVEH",
-    },
-    {
-      id: "es-23",
-      type: "image",
-      title: "MEZCLA LIPO MEDULA PLASMA",
-      driveFileId: "1IBlO-zst8ELeMxO503PEYBQRaB70EDNH",
-    },
-    ],
-  },
+EP: {
+  code: "EP",
+  title: "Extracción de plasma",
+  media: getActivityMedia("EP"),
+},
 
-  IR: {
-    code: "IR",
-    title: "Infiltración de rodillas",
-    media: [
-      {
-      id: "es-24",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1NaP0Ra1pWhqG8t_yphGH7V-znTcs1oMM",
-    },{
-      id: "es-25",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1Mu9psYPPME_FXFGiR9-RBLUGI9aa7E4K",
-    },
-    {
-      id: "es-26",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1CfKKEuQ-OXmRoxY-VDPKTmG6YnsPLgXP",
-    },
-    {
-      id: "es-27",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "13eH5GI4f4gx_x8hUDvdTBFAGSGrxllYW",
-    },
-    {
-      id: "es-28",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1JLxygSusFeJoqHajLy0CMMeTEClUUKjr",
-    },
-    {
-      id: "es-29",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "18bWhwwb5szQ1vptRcf4w57h4YprHQwsG",
-    },
-    {
-      id: "es-30",
-      type: "image",
-      title: "Epinefrina",
-      driveFileId: "1q6BZmPolRv37MUP8Gnid5rLgoxf_KAca",
-    },
-    ],
-  },
+M: {
+  code: "M",
+  title: "Combinación de componentes autólogos",
+  media: getActivityMedia("M"),
+},
 
-  IRO: {
-    code: "VIR",
-    title: "Infiltración de ozono",
-    media: [],
-  },
+IR: {
+  code: "IR",
+  title: "Infiltración de rodillas",
+  media: getActivityMedia("IR"),
+},
 
-  VIR: {
-    code: "VIR",
-    title: "Colocaión de vendoletes",
-    media: [],
-  },
+VIR: {
+  code: "VIR",
+  title: "Colocación de vendoletes",
+  media: getActivityMedia("VIR"),
 
-  IC: {
-    code: "IC",
-    title: "Infiltración de columna",
-    media: [],
-  },
+},
+IRO: {
+  code: "VIR",
+  title: "Infiltración de ozono",
+  media: [],
+},
 
-  ICO: {
-    code: "ICO",
-    title: "Infiltración de ozono",
-    media: [],
-  },
+IC: {
+  code: "IC",
+  title: "Infiltración de columna",
+  media: [],
+},
 
-  IHS: {
-    code: "IHS",
-    title: "Infiltración de hiato sacro",
-    media: [],
-  },
+ICO: {
+  code: "ICO",
+  title: "Infiltración columna ozono",
+  media: [],
+},
 
-  IACF: {
-    code: "IACF",
-    title: "Infiltración de articulación coxofemoral",
-    media: [],
-  },
+IHS: {
+  code: "IHS",
+  title: "Infiltración de hiato sacro",
+  media: [],
+},
 
-  VCL: {
-    code: "VCL",
-    title: "Colocaión de vendoletes",
-    media: [],
-  },
+IACF: {
+  code: "IACF",
+  title: "Infiltración coxofemoral",
+  media: [],
+},
+
+VCL: {
+  code: "VCL",
+  title: "Colocación de vendoletes",
+  media: [],
+},
 };
 
 /**
