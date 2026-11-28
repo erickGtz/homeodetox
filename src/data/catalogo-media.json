@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-26T09:42:45.476Z",
+  "generatedAt": "2026-11-28T02:09:10.645Z",
   "bucket": "homeodetox-media",
-  "totalFiles": 35,
-  "totalImages": 19,
-  "totalVideos": 16,
+  "totalFiles": 47,
+  "totalImages": 29,
+  "totalVideos": 18,
   "files": [
     {
       "key": "Bloqueos y sedacion/2 Canalizando al paciente .jpg",
@@ -256,26 +256,6 @@
       "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/26%20INFILTRACION%20RODILLAS%20PREPARADO.jpg"
     },
     {
-      "key": "Infiltraccion Rodillas/27 INFILTRACION OZONO ROD DER..jpg",
-      "folder": "Infiltraccion Rodillas",
-      "filename": "27 INFILTRACION OZONO ROD DER..jpg",
-      "extension": ".jpg",
-      "type": "image",
-      "size": 252713,
-      "lastModified": "2026-11-25T13:16:41.983Z",
-      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/27%20INFILTRACION%20OZONO%20ROD%20DER..jpg"
-    },
-    {
-      "key": "Infiltraccion Rodillas/28 INFILTRACION OZONO RODILLA IZQ..jpg",
-      "folder": "Infiltraccion Rodillas",
-      "filename": "28 INFILTRACION OZONO RODILLA IZQ..jpg",
-      "extension": ".jpg",
-      "type": "image",
-      "size": 184586,
-      "lastModified": "2026-11-25T13:16:42.584Z",
-      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/28%20INFILTRACION%20OZONO%20RODILLA%20IZQ..jpg"
-    },
-    {
       "key": "Infiltraccion Rodillas/29 ACUTOMO SIGNO DE PATA DE GANSO.webm",
       "folder": "Infiltraccion Rodillas",
       "filename": "29 ACUTOMO SIGNO DE PATA DE GANSO.webm",
@@ -284,6 +264,106 @@
       "size": 385678,
       "lastModified": "2026-11-25T13:16:42.006Z",
       "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltraccion%20Rodillas/29%20ACUTOMO%20SIGNO%20DE%20PATA%20DE%20GANSO.webm"
+    },
+    {
+      "key": "Infiltracion columna/31 EJEMPLO INFILTRACION COLUMNA LUMBAR . ASEPSIA.jpg",
+      "folder": "Infiltracion columna",
+      "filename": "31 EJEMPLO INFILTRACION COLUMNA LUMBAR . ASEPSIA.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 417218,
+      "lastModified": "2026-11-28T01:54:28.463Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20columna/31%20EJEMPLO%20INFILTRACION%20COLUMNA%20LUMBAR%20.%20ASEPSIA.jpg"
+    },
+    {
+      "key": "Infiltracion columna/31 MARCAJE INFILTRACION COLUMNA LUMBAR.jpg",
+      "folder": "Infiltracion columna",
+      "filename": "31 MARCAJE INFILTRACION COLUMNA LUMBAR.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 395441,
+      "lastModified": "2026-11-28T01:54:28.056Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20columna/31%20MARCAJE%20INFILTRACION%20COLUMNA%20LUMBAR.jpg"
+    },
+    {
+      "key": "Infiltracion columna/32 PUNCION COLUMNA LUMBAR.jpg",
+      "folder": "Infiltracion columna",
+      "filename": "32 PUNCION COLUMNA LUMBAR.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 83742,
+      "lastModified": "2026-11-28T01:54:27.228Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20columna/32%20PUNCION%20COLUMNA%20LUMBAR.jpg"
+    },
+    {
+      "key": "Infiltracion columna/33 CAVITACION COLUMNA LUMBAR.jpg",
+      "folder": "Infiltracion columna",
+      "filename": "33 CAVITACION COLUMNA LUMBAR.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 103549,
+      "lastModified": "2026-11-28T01:54:27.362Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20columna/33%20CAVITACION%20COLUMNA%20LUMBAR.jpg"
+    },
+    {
+      "key": "Infiltracion columna/33.5 INFILTRACION COLUMNA LUMBAR.jpg",
+      "folder": "Infiltracion columna",
+      "filename": "33.5 INFILTRACION COLUMNA LUMBAR.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 436623,
+      "lastModified": "2026-11-28T01:54:28.394Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20columna/33.5%20INFILTRACION%20COLUMNA%20LUMBAR.jpg"
+    },
+    {
+      "key": "Infiltracion coxofemoral/35.1 EJEMPLO INFILTRACION ARTICULACION COXOFEMORAL , UBICACION DE EXTRUCTURAS POR USG.webm",
+      "folder": "Infiltracion coxofemoral",
+      "filename": "35.1 EJEMPLO INFILTRACION ARTICULACION COXOFEMORAL , UBICACION DE EXTRUCTURAS POR USG.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 1219146,
+      "lastModified": "2026-11-28T01:58:23.757Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20coxofemoral/35.1%20EJEMPLO%20INFILTRACION%20ARTICULACION%20COXOFEMORAL%20%2C%20UBICACION%20DE%20EXTRUCTURAS%20POR%20USG.webm"
+    },
+    {
+      "key": "Infiltracion coxofemoral/35.2 ARTICULACION COXOFEMORAL USG.jpg",
+      "folder": "Infiltracion coxofemoral",
+      "filename": "35.2 ARTICULACION COXOFEMORAL USG.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 162123,
+      "lastModified": "2026-11-28T01:58:21.998Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20coxofemoral/35.2%20ARTICULACION%20COXOFEMORAL%20USG.jpg"
+    },
+    {
+      "key": "Infiltracion coxofemoral/35.2 INFILTRACION ARTICULACION COXOFEMORAL.webm",
+      "folder": "Infiltracion coxofemoral",
+      "filename": "35.2 INFILTRACION ARTICULACION COXOFEMORAL.webm",
+      "extension": ".webm",
+      "type": "video",
+      "size": 2020393,
+      "lastModified": "2026-11-28T01:58:24.604Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20coxofemoral/35.2%20INFILTRACION%20ARTICULACION%20COXOFEMORAL.webm"
+    },
+    {
+      "key": "Infiltracion hiato sacro/34 INFILTRACION HIATO SACRO.jpg",
+      "folder": "Infiltracion hiato sacro",
+      "filename": "34 INFILTRACION HIATO SACRO.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 352718,
+      "lastModified": "2026-11-28T02:01:41.582Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20hiato%20sacro/34%20INFILTRACION%20HIATO%20SACRO.jpg"
+    },
+    {
+      "key": "Infiltracion hiato sacro/35 INFILTRACION HIATO SACRO.jpg",
+      "folder": "Infiltracion hiato sacro",
+      "filename": "35 INFILTRACION HIATO SACRO.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 359900,
+      "lastModified": "2026-11-28T02:01:41.390Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Infiltracion%20hiato%20sacro/35%20INFILTRACION%20HIATO%20SACRO.jpg"
     },
     {
       "key": "Mezcla/22 MEZCLA LIPO MEDULA PLASMA.jpg",
@@ -304,6 +384,36 @@
       "size": 1120822,
       "lastModified": "2026-11-25T12:49:37.897Z",
       "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Mezcla/23%20MEZCLA%20LIPO%20MEDULA%20PLASMA%20%2012-21.webm"
+    },
+    {
+      "key": "Ozono columna/33.6 INFILTRACION COLUMNA LUMBAR OZONO.jpg",
+      "folder": "Ozono columna",
+      "filename": "33.6 INFILTRACION COLUMNA LUMBAR OZONO.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 414923,
+      "lastModified": "2026-11-28T01:55:16.918Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Ozono%20columna/33.6%20INFILTRACION%20COLUMNA%20LUMBAR%20OZONO.jpg"
+    },
+    {
+      "key": "Ozono rodillas/27 INFILTRACION OZONO ROD DER..jpg",
+      "folder": "Ozono rodillas",
+      "filename": "27 INFILTRACION OZONO ROD DER..jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 252713,
+      "lastModified": "2026-11-28T01:47:15.691Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Ozono%20rodillas/27%20INFILTRACION%20OZONO%20ROD%20DER..jpg"
+    },
+    {
+      "key": "Ozono rodillas/28 INFILTRACION OZONO RODILLA IZQ.jpg",
+      "folder": "Ozono rodillas",
+      "filename": "28 INFILTRACION OZONO RODILLA IZQ.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 184586,
+      "lastModified": "2026-11-28T01:47:15.761Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Ozono%20rodillas/28%20INFILTRACION%20OZONO%20RODILLA%20IZQ.jpg"
     },
     {
       "key": "Solucion de Klein/10 SOLUCION KLEIN  13 -25.webm",
@@ -344,6 +454,16 @@
       "size": 356032,
       "lastModified": "2026-11-25T14:17:59.471Z",
       "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Solucion%20de%20Klein/9%20SOLUCION%20KLEIN%2013-19.webm"
+    },
+    {
+      "key": "Vendoletes columna/36 VENDOLETES COLUMNA LUMBAR.jpg",
+      "folder": "Vendoletes columna",
+      "filename": "36 VENDOLETES COLUMNA LUMBAR.jpg",
+      "extension": ".jpg",
+      "type": "image",
+      "size": 88609,
+      "lastModified": "2026-11-28T01:55:41.976Z",
+      "url": "https://pub-019c2cadde07494e9cf68017d62f7f55.r2.dev/Vendoletes%20columna/36%20VENDOLETES%20COLUMNA%20LUMBAR.jpg"
     },
     {
       "key": "Vendoletes rodilla/30 COLOCACION DE VENDOLETES RODILLAS.jpg",

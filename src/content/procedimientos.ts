@@ -41,6 +41,14 @@ export type TherapyActivityCode =
   M: "Mezcla",
   IR: "Infiltraccion Rodillas",
   VIR: "Vendoletes rodilla",
+  IRO: "Infiltracion de ozono",
+  IC: "Infiltracion columna",
+  ICO: "Infiltracion de columna ozono",
+  IHS: "Infiltracion hiato sacro",
+  IACF: "Infiltracion coxofemoral",
+  VCL: "Vendoletes columna lumbar"
+
+
 };
 
 function getActivityMedia(code: TherapyActivityCode): TherapyMedia[] {
@@ -226,37 +234,37 @@ VIR: {
 IRO: {
   code: "VIR",
   title: "Infiltración de ozono",
-  media: [],
+  media: getActivityMedia("IRO"),
 },
 
 IC: {
   code: "IC",
   title: "Infiltración de columna",
-  media: [],
+  media: getActivityMedia("IC"),
 },
 
 ICO: {
   code: "ICO",
   title: "Infiltración columna ozono",
-  media: [],
+  media: getActivityMedia("ICO"),
 },
 
 IHS: {
   code: "IHS",
   title: "Infiltración de hiato sacro",
-  media: [],
+  media: getActivityMedia("IHS"),
 },
 
 IACF: {
   code: "IACF",
   title: "Infiltración coxofemoral",
-  media: [],
+  media: getActivityMedia("IACF"),
 },
 
 VCL: {
   code: "VCL",
   title: "Colocación de vendoletes",
-  media: [],
+  media: getActivityMedia("VCL"),
 },
 };
 
